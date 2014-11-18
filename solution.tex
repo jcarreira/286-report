@@ -4,10 +4,17 @@ Having discovered that a significant portion of the time spent running small tas
 Another interesting discovery regarding the deserialization time is that after the information regarding the new files and JARs needed by the task is deserialized, the executor calls a function to update the dependencies. But in this function, the original implementation creates a new Hadoop configuration object every time, despite the fact that it is rarely used. Since creating a new Hadoop configuration is costly in CPU cycles, we made the instantiation of the object lazy, and saw an order of magnitude improvement in the execution time of that function.
 
 
-
 \subsection{Scheduling scalability}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.45]{scheduler_architecture.eps}
+  \end{center}
+  \caption{Proposed scheduler architecture.}
+  \label{fig:scheduler_architecture}
+\end{figure}
 
 To allow Spark Streaming to schedule more tasks per second we propose 1) scheduling all tasks per worker in bulk and 2) scheduling tasks in a decentralized fashion.
 First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message to reduce communication overheads.
-Secondly, as the task generation rate surpasses the scheduling rate, the driver spawns schedulers in other nodes. Thereafter, tasks are scheduled by different schedulers, potentially deployed in different nodes (see Fig. Y).
+Secondly, as the task generation rate surpasses the scheduling rate, the driver spawns schedulers in other nodes. Thereafter, tasks are scheduled by different schedulers, potentially deployed in different nodes (see Fig. \ref{fig:scheduler_architecture}).
 
