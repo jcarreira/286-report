@@ -6,6 +6,7 @@ all: clean
 	bibtex main
 	pdflatex main.tex
 	pdflatex main.tex
+	pdflatex main.tex
 
 open: $(PROJ).pdf
 	kpdf $^

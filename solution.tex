@@ -11,10 +11,10 @@ Another interesting discovery regarding the deserialization time is that after t
     \includegraphics[scale=0.45]{scheduler_architecture.eps}
   \end{center}
   \caption{Proposed scheduler architecture.}
-  \label{fig:scheduler_architecture}
+  \label{fig:schedarch}
 \end{figure}
 
 To allow Spark Streaming to schedule more tasks per second we propose 1) scheduling all tasks per worker in bulk and 2) scheduling tasks in a decentralized fashion.
 First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message to reduce communication overheads.
-Secondly, as the task generation rate surpasses the scheduling rate, the driver spawns schedulers in other nodes. Thereafter, tasks are scheduled by different schedulers, potentially deployed in different nodes (see Fig. \ref{fig:scheduler_architecture}).
+Secondly, as the task generation rate surpasses the scheduling rate, the driver spawns schedulers in other nodes. Thereafter, tasks are scheduled by different schedulers, potentially deployed in different nodes (see Fig. \ref{fig:schedarch}).
 
