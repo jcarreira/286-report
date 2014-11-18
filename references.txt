@@ -1,0 +1,7 @@
+References go here:
+
+The Trill Incremental Analytics Engine
+Spark
+Spark Streaming
+Storm
+Some dataflow papers from DBs
