@@ -1,0 +1,13 @@
+\noindent
+
+Many data analytics applications, like intrusion detection and web search, require the computation of results in a timely fashion in order to provide interactivity and fast response to incoming events.
+Data analytics systems like Storm or Spark Streaming provide easy-to-use and deploy frameworks for these types of applications. Storm handles data by creating pipelines for record-at-a-time processing with at-least-once semantics.Spark Streaming offers processing capabilities with micro-batches, where records are coalesced into small groups before being consumed together.
+Spark Streaming 
+
+
+Spark Streaming is a system that builds on top of Spark to provide stream processing. It implements the discretized stream (D-Stream) abstraction, and uses a micro-batch approach to process data as they are received. Users specify a batch interval, and the system will process all of the data received together in a continuous, batching fashion. Internally, there is a variable called block interval that is smaller than the batch interval, and the number of blocks generated in a batch corresponds to the number of tasks spawned for every stage of a  batch job.
+
+We perform an in-depth analysis of Spark Streaming, and introduce a number of improvements to the system so that it can handle applications with latency requirements on the order of hundreds or even tens of milliseconds without sacrificing too much throughput. More specifically, we focus on three main areas of improvements. The first area is to reduce the overhead of running tasks. As tasks are sent from the driver to the executors, there are a number of inefficiencies in terms of sending duplicate data and performing redundant computations. The second area is the scheduling scalability. Currently, Spark uses a centralized scheduler, which becomes a bottleneck as the number of tasks needed to be scheduled increases with the increase in number of receivers or decrease in the block interval. The third area of focus is the network overhead. The amount of network communication is proportional to the number of tasks running concurrently. We propose an enhancement that uses newer technology such as InfiniBand to reduce the transmission delay, or remote direct memory access (RDMA) to relieve the burden of sending and receiving network packets from the driver CPU.
+
+The paper is organized as follows: In Section 2 we motivate the importance of solving the problem of high task overhead and limited scheduling scalability. In Section 3 we propose measures and techniques to solve these problems. An evaluation of this work is presented in Section 4. Finally, we conclude in Section 5.
+
