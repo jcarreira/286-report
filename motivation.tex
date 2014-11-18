@@ -1,0 +1,13 @@
+\subsection{Task overheads}
+Since tasks form the basic unit of computation for Spark Streaming, it is important to optimize it as much as possible. Since the system is still relatively new, much of the current codebase emphasize more on ease of understanding over raw performance. By analyzing the decisions made by the developers and measuring execution times in different sections of the code path, we found a number of inefficiencies that could be improved upon.
+
+During our experiments, we found that when the task is not computation-intensive, the majority of the time in running the task is spent in deserialization. When running tasks with no-op operations, we found that from the driver's perspective, the time it takes for a task to be scheduled to the time it takes for the result to be received is 5ms. However, approximately 3.6ms out of this time is spent deserializing the task. These metrics mean that if we can reduce the task deserialization time, there will be a considerable improvement to the latency of small tasks.
+
+
+\subsection{Scheduling scalability}
+
+In Spark Streaming, tasks to process a stream of data are periodically generated and added to the tail of a queue. This queue is continuously probed by the scheduler which takes tasks from the queue and sends them to worker nodes for processing (scheduling).
+As the tasks get smaller, driven by the need to deliver results as quickly as possible, and become more frequently generated the number of tasks added to the queue per unit of time increases. If enough tasks per second are generated, the scheduler is not able to keep up with the rate of tasks being added to the queue. This results in tasks starting to queue up and the average time to schedule a task increases indefinitely.
+
+We have benchmarked the latency (end-to-end time to completion) of Spark Streaming tasks with different batch intervals. Lower batch intervals lead to lower task latencies, less throughput and more tasks scheduled per second. On the other hand, larger batch intervals lead to higher throughput, higher task latencies and less tasks scheduled per second. Our benchmark (see graph X)  
+
