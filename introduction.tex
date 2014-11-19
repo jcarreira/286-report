@@ -1,7 +1,10 @@
 \noindent
 
-Many data analytics applications, like intrusion detection and web search, require the computation of results in a timely fashion in order to provide interactivity and fast response to incoming events.
-Data analytics systems such as Storm~\cite{Storm} or Spark Streaming~\cite{SparkStreaming} provide easy-to-use and deploy frameworks for these types of applications. Storm handles streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. Spark Streaming offers processing capabilities with micro-batches, where records are coalesced into small groups before being consumed together.
+Many data analytics applications, like intrusion detection and web search, 
+require the computation of results in a timely fashion in order to provide interactivity and fast response to incoming events.
+Data analytics systems such as Storm~\cite{Storm} or Spark Streaming~\cite{SparkStreaming} provide easy-to-use and deploy frameworks for these types of applications. 
+Storm handles streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. 
+Spark Streaming offers processing capabilities with micro-batches, where records are coalesced into small groups before being consumed together.
 
 % TODO:
 % Why are we focusing on Spark Streaming?
@@ -13,3 +16,5 @@ We perform an in-depth analysis of Spark Streaming, and introduce a number of im
 
 The paper is organized as follows: in Section 2 we motivate the importance of solving the problems of 1) high task overhead, 2) limited scheduling scalability, and 3) high network communication delay. In Section 3 we discuss the implementation details on solving these problems. In Section 4 we conclude on our findings.
 
+
+\team{We should have a short background section explaining how Spark works. Things like receivers/executors/workers/driver could be introduced here. 1 clean diagram and everything afterwards with be much easier to understand}
