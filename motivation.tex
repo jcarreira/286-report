@@ -1,4 +1,4 @@
-\subsection{Task Overheads}
+\subsection{Task Overhead}
 Since tasks form the basic units of computation for Spark Streaming, it is important to optimize its execution. This problem is especially relevant in our case, since the tasks we are executing are short. As the system is still relatively new, much of the current codebase emphasizes more on the ease of understanding over raw performance. By analyzing the decisions made by the developers and measuring execution times in different sections of the code path, we found a number of inefficiencies that can be improved upon.
 
 For every Spark Streaming application, there is a driver and multiple executors. The receivers of data run on executors, and these receivers send to the driver metadata about the blocks generated. After every batch interval, the driver collects all of the blocks received during the period and make them into a RDD, and runs application logic on it using Spark. Spark runs each function on the RDD by generating tasks, serialize them, and send them to appropriate executors. The executors deserialize each task, runs the function, and returns to the driver the results.
@@ -26,3 +26,6 @@ Because we are solely interested in benchmarking the scheduling performance we c
 
 Our benchmark shows that Spark Streaming cannot provide end-to-end task latencies under 80 ms. At this point the system becomes unstable because the scheduler cannot keep up with the rate of tasks generated. Down to a batch interval of 40ms the system's scheduling delay, the time it takes for a task to be scheduled once it is generated, is nearly zero.
 
+
+\subsection{Network Overhead}
+As the number of tasks increases, so does the amount of communication between the driver and executors. We plan to increase the network throughput using InfiniBand, and also explore using RDMA to realize zero-copy. Ideally with these improvements, not only network communication will be faster, the driver will also have more CPU time to schedule tasks.
