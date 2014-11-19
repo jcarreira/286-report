@@ -5,6 +5,13 @@ For every Spark Streaming application, there is a driver and multiple executors.
 
 During our experiments, we found that when a task is not computation-intensive, the majority of the time in running the task is spent in deserialization. When running tasks with no-op operations, we found that from the driver's perspective, the time it takes for a task to be scheduled to the time it takes for the result to be received is 5ms. However, approximately 3.6ms out of this time is spent deserializing the task. These metrics mean that if we can reduce the task deserialization time, there will be a considerable improvement to the latency of small tasks.
 
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.30]{deserialization.eps}
+  \end{center}
+  \caption{How a task is deserialized on the executor.}
+  \label{fig:deserialization}
+\end{figure}
 
 \subsection{Scheduling Scalability}
 
