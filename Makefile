@@ -1,10 +1,11 @@
 PROJ=main
 .PHONY: clean open spell
 
+FILES=$(wildcard *.tex)
+
 all: clean
 	pdflatex main.tex
 	bibtex main
-	pdflatex main.tex
 	pdflatex main.tex
 	pdflatex main.tex
 
@@ -24,4 +25,6 @@ clean:
 
 
 spell:
-	aspell -t -c -p $(shell pwd)/dict.txt main.tex
+	for i in $(FILES) ; do \
+	aspell -t -c -p $(shell pwd)/dict.txt $$i ; \
+	done;
