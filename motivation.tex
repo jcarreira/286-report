@@ -29,3 +29,13 @@ Our benchmark shows that Spark Streaming cannot provide end-to-end task latencie
 
 \subsection{Network Overhead}
 As the number of tasks increases, so does the amount of communication between the driver and executors. We plan to increase the network throughput using InfiniBand, and also explore using RDMA to realize zero-copy. Ideally with these improvements, not only network communication will be faster, the driver will also have more CPU time to schedule tasks.
+
+
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.45]{scheduler_architecture.eps}
+  \end{center}
+  \caption{Proposed scheduler architecture. Schedulers are oportunistically spawned by the driver. These schedulers receive tasks from the Driver and schedule them to Worker nodes.}
+  \label{fig:schedarch}
+\end{figure}
+
