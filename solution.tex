@@ -14,7 +14,8 @@ Another interesting discovery regarding the deserialization time is that after t
   \label{fig:schedarch}
 \end{figure}
 
-To allow Spark Streaming to schedule more tasks per second we propose 1) scheduling all tasks per worker in bulk and 2) scheduling tasks in a decentralized fashion.
-First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message to reduce communication overheads.
-Secondly, as the task generation rate surpasses the scheduling rate, the driver spawns schedulers in other nodes. Thereafter, tasks are scheduled by different schedulers, potentially deployed in different nodes (see Fig. \ref{fig:schedarch}).
+To enable a higher scheduling rate of tasks by Spark Streaming we propose 1) scheduling all tasks per worker in bulk and 2) physically decoupling the scheduling (Scheduler) of tasks from the generation (Driver).
+First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message. This reduces the serialization and networking overheads that result from sending many small messages.
+Secondly, as the task generation rate surpasses the scheduling rate, the driver elastically spawns schedulers in remote physical nodes. Thereafter, tasks are forwarded, according to some policy, to these newly spawned schedulers for scheduling (see Fig. \ref{fig:schedarch}). 
 
+We have implemented this solution in Spark Streaming.
