@@ -1,7 +1,7 @@
 \subsection{Task Overhead}
 Since tasks form the basic units of computation for Spark Streaming, it is important to optimize its execution. This problem is especially relevant in our case, since the tasks we are executing are short. As the system is still relatively new, much of the current codebase emphasizes more on the ease of understanding over raw performance. By analyzing the decisions made by the developers and measuring execution times in different sections of the code path, we found a number of inefficiencies that can be improved upon.
 
-For every Spark Streaming application, there is a driver and multiple executors. The receivers of data run on executors, and these receivers send to the driver metadata about the blocks generated. After every batch interval, the driver collects all of the blocks received during the period and make them into a RDD, and runs application logic on it using Spark. Spark runs each function on the RDD by generating tasks, serialize them, and send them to appropriate executors. The executors deserialize each task, runs the function, and returns to the driver the results.
+For every Spark Streaming application, there is a driver and multiple executors. The receivers of data run on executors, and these receivers send to the driver metadata about the blocks generated. After every batch interval, the driver collects all of the blocks received during the period and make them into a RDD (Resilient Distributed Dataset, Spark's abstraction for distributed objects), and runs application logic on it using Spark. Spark runs each function on the RDD by generating tasks, serializing them, and sending them to appropriate executors. The executors deserialize each task, runs the function, and returns to the driver the results.
 
 During our experiments, we found that when a task is not computation-intensive, the majority of the time in running the task is spent in deserialization. When running tasks with no-op operations, we found that from the driver's perspective, the time it takes for a task to be scheduled to the time it takes for the result to be received is 5ms. However, approximately 3.6ms out of this time is spent deserializing the task. These metrics mean that if we can reduce the task deserialization time, there will be a considerable improvement to the latency of small tasks.
 
@@ -15,20 +15,20 @@ During our experiments, we found that when a task is not computation-intensive, 
 
 \subsection{Scheduling Scalability}
 
-During the execution of a Spark Streaming application, the Driver (a central component of Spark) generates tasks periodically and adds them to the tail of a scheduling queue. This queue is continuously probed by the scheduler which takes tasks from the queue and sends them to worker nodes for processing -- scheduling.
-As the tasks get smaller, driven by the need to deliver results as quickly as possible, and become more frequently generated, the number of tasks added to the queue per unit of time increases. If enough tasks per second are generated, the scheduler is not able to keep up with the rate of tasks being added to the queue. This results in tasks starting to queue up and the average time to schedule a task increases indefinitely.
-Lower batch intervals lead to lower task latencies, less throughput and more tasks scheduled per second. On the other hand, larger batch intervals lead to higher throughput, higher task latencies and less tasks scheduled per second. 
+During the execution of a Spark Streaming application, the Driver (a central component of Spark) generates tasks periodically and adds them to the tail of a scheduling queue. This queue is continuously probed by the scheduler, which schedules by taking tasks from the queue and sending them to worker nodes for processing.
+As applications specify lower batch intervals to process results more quickly, the number of tasks added to the queue per unit of time increases. Eventually, the scheduler will be unable to keep up with the rate of tasks being added to the queue. This results in an indefinite increase in the average time to schedule a task, which is worse considering the fact that tasks in one batch have less time to be processed before the next batch is generated.
+From this observation, we can see that lower batch intervals lead to lower task latencies, less throughput and more tasks scheduled per second. On the other hand, larger batch intervals lead to higher throughput, higher task latencies and less tasks scheduled per second. 
 
-To understand the performance of the current version of Spark Streaming we have benchmarked the latency (end-to-end time to completion) of tasks with different batch intervals. 
-Our benchmarks were run on a 16-node cluster. Each node has 16 cores. We have used 120 receivers (processes generating stream data) on 4 nodes. 
-With this configuration, Spark Streaming generates $120*1000/batch\_interval$ tasks per second.
-Because we are solely interested in benchmarking the scheduling performance we changed Spark to generate no-op tasks.
+To understand the performance of the current version of Spark Streaming, we have benchmarked the end-to-end latencies of tasks with different batch intervals. 
+Our benchmarks were run on a 16-node cluster, with each node having 16 cores. We have used 120 receivers on 4 nodes. 
+With this configuration, Spark Streaming generates 120$*$1000/(batch interval) tasks per second.
+Because we are solely interested in benchmarking the scheduling performance, we ran applications that generate no-op tasks.
 
-Our benchmark shows that Spark Streaming cannot provide end-to-end task latencies under 80 ms. At this point the system becomes unstable because the scheduler cannot keep up with the rate of tasks generated. Down to a batch interval of 40ms the system's scheduling delay, the time it takes for a task to be scheduled once it is generated, is nearly zero.
+Our benchmark shows that Spark Streaming cannot provide end-to-end task latencies under 80ms. At this point, the system becomes unstable because the scheduler cannot keep up with the rate of tasks generated. Down to a batch interval of 40ms the system's scheduling delay, the time it takes for a task to be scheduled once it is generated, is nearly zero.
 
 
 \subsection{Network Overhead}
-As the number of tasks increases, so does the amount of communication between the driver and executors. We plan to increase the network throughput using InfiniBand, and also explore using RDMA to realize zero-copy. Ideally with these improvements, not only network communication will be faster, the driver will also have more CPU time to schedule tasks.
+As the number of tasks increases, so does the amount of communication between the driver and executors. We plan to increase the network throughput using InfiniBand, and also explore using RDMA to realize zero-copy. Ideally with these improvements, not only network communication will be faster, the driver will also have more CPU time to schedule tasks, ultimately reducing the latencies of running tasks.
 
 
 \begin{figure}[t!]
