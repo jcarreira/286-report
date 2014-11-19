@@ -20,11 +20,11 @@ Another interesting discovery regarding the deserialization time is that in upda
   \begin{center}
     \includegraphics[scale=0.45]{scheduler_architecture.eps}
   \end{center}
-  \caption{Proposed scheduler architecture.}
+  \caption{Proposed scheduler architecture. Schedulers are oportunistically spawned by the driver. These schedulers receive tasks from the Driver and schedule them to Worker nodes.}
   \label{fig:schedarch}
 \end{figure}
 
-To enable a higher scheduling rate of tasks by Spark Streaming we propose 1) scheduling all tasks per worker in bulk and 2) physically decoupling the scheduling (Scheduler) of tasks from the generation (Driver).
+To enable a higher scheduling rate of tasks by Spark Streaming we propose 1) scheduling all tasks per worker in bulk and 2) physically decoupling the scheduling (Scheduler) of tasks from their generation (Driver).
 First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message. This reduces the serialization and networking overheads that result from sending many small messages.
 Secondly, as the task generation rate surpasses the scheduling rate, the driver elastically spawns schedulers in remote physical nodes. Thereafter, tasks are forwarded, according to some policy, to these newly spawned schedulers for scheduling (see Fig. \ref{fig:schedarch}). 
 

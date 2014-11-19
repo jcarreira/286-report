@@ -10,6 +10,12 @@ During our experiments, we found that when a task is not computation-intensive, 
 
 During the execution of a Spark Streaming application, the Driver (a central component of Spark) generates tasks periodically and adds them to the tail of a scheduling queue. This queue is continuously probed by the scheduler which takes tasks from the queue and sends them to worker nodes for processing -- scheduling.
 As the tasks get smaller, driven by the need to deliver results as quickly as possible, and become more frequently generated, the number of tasks added to the queue per unit of time increases. If enough tasks per second are generated, the scheduler is not able to keep up with the rate of tasks being added to the queue. This results in tasks starting to queue up and the average time to schedule a task increases indefinitely.
+Lower batch intervals lead to lower task latencies, less throughput and more tasks scheduled per second. On the other hand, larger batch intervals lead to higher throughput, higher task latencies and less tasks scheduled per second. 
 
-We have benchmarked the latency (end-to-end time to completion) of Spark Streaming tasks with different batch intervals. Lower batch intervals lead to lower task latencies, less throughput and more tasks scheduled per second. On the other hand, larger batch intervals lead to higher throughput, higher task latencies and less tasks scheduled per second. Our benchmark (see graph X)  
+To understand the performance of the current version of Spark Streaming we have benchmarked the latency (end-to-end time to completion) of tasks with different batch intervals. 
+Our benchmarks were run on a 16-node cluster. Each node has 16 cores. We have used 120 receivers (processes generating stream data) on 4 nodes. 
+With this configuration, Spark Streaming generates $120*1000/batch\_interval$ tasks per second.
+Because we are solely interested in benchmarking the scheduling performance we changed Spark to generate no-op tasks.
+
+Our benchmark shows that Spark Streaming cannot provide end-to-end task latencies under 80 ms. At this point the system becomes unstable because the scheduler cannot keep up with the rate of tasks generated. Down to a batch interval of 40ms the system's scheduling delay, the time it takes for a task to be scheduled once it is generated, is nearly zero.
 
