@@ -1,6 +1,9 @@
 \team{I would merge this section with Introduction}
 
 \subsection{Task Overhead}
+
+\team{I think we should frame this "task overheads" into a bigger picture. Starting by explaining how the process of running a Spark streaming application works, and then pointing out the major sources of overhead. Plot graph showing the time breakdown between serialization, computation, scheduling, etc...}
+
 Since tasks form the basic units of computation for Spark Streaming, it is important to optimize its execution. 
 \jianneng{I don't agree with the previous statement. Tasks are also the basic units for computation in Hadoop and still that is not such a big deal because batch tasks take a lot of time. Next sentence is good and should be more developed.} 
 This problem is especially relevant in our case, since the tasks we are executing are short. As the system is still relatively new, much of the current codebase emphasizes more on the ease of understanding over raw performance. 
