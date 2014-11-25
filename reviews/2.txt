@@ -1,0 +1,19 @@
+This project is really cool and I liked going through it. My feedback is below
+
+1.) What are three aspects of this work that you were most excited about?
+-The point about serialization is something we have heard before in the context of vanilla Spark, so I could imagine that this is a lot worse with DStreams. I think investigating this further is really valuable.
+-There hasn't been much work that has evaluating bottlenecks of Spark with respect to different underlying architecture outside of EC2 such as InfiniBand. 
+-The duplicate data is a good idea and I would explore that further.
+
+2.) What are three areas for improvement or areas of concern in this
+work? Please focus on the ideas proposed in the documents, rather than
+the fact that, for example, many documents don't contain actual
+experimental evaluations yet.
+-My one biggest concern is that it is really hard to isolate variables in a software stack as complicated as Spark. What might look like CPU issue, may really be deserialization, and what may look like network may really be a join shuffle problem etc. I know I've run into this issue before when writing papers especially at extremes when plots don't do what you expect.
+-Is decoupling the scheduler from the driver a good idea, or is it just pushing away a hard problem to a different node?
+-The term overhead is not well defined, there are somethings in spark that just take a lot of time due to the nature of the task ie. shuffle or serializing a big object--and it would be great if you could really explain what you mean by "x takes longer than it should". Do you mean that "x" is a bottleneck, if so lim x-> 0 how much faster is the task?
+
+3.) What additional analysis or experiments would you like to see in
+the final version of this work?
+-Kay has been working on analyzing Spark proper in such a way, I would talk to her about getting some of her instrumentation code.
+-Simulating a real stream of data is quite challenging. I've had some issues with this in the past as we often get datasets offline. It is really important to play them back respecting time eg. bursts etc. Furthermore, real use cases often have variable throughput demands throughout the day and it is really hard to get his right, and I would love to hear your thoughts on how to evaluate a streaming system.

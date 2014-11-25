@@ -1,0 +1,98 @@
+First of all, cool work in optimizing the performance of Spark
+Streaming and great observations in the three aspects where you can
+push the limit of interactive latencies in Spark Streaming. I will
+follow the template first and then offer some of my additional
+comments.
+
+1.) What are three aspects of this work that you were most excited about?
+
+[1] Original discretized stream paper was more focused on the batch
+model and fault tolerance part; and didn't push hard on each batch
+interval. Thus from application development point of view, users have
+no clue about possibilities for low latency application because all
+they know is Spark Streaming works for O(second) applications. What
+this paper tries to do fills that gap. I believe the benchmarking made
+in this paper will help developers make better decision when using
+Spark Streaming.
+
+[2] The paper doesn't stop at simply benchmarking; it has identified a
+few areas for improvement. Specifically, it's cool to trace down where
+the overhead lives; and propose relevant techniques to tackle each
+part.
+
+[3] Although it feels that the usage of InfiniBand is a bit ad hoc, I
+like the idea of trying out new technology. And as motivated in Sec
+2.3, when the number of tasks increases, the communication
+requirements will also increase. It's exciting to see what the
+benefits that software improvements and hardware improvements can
+bring respectively -- a more complete exploration of the space.
+
+2.) What are three areas for improvement or areas of concern in this
+work? Please focus on the ideas proposed in the documents, rather than
+the fact that, for example, many documents don't contain actual
+experimental evaluations yet.
+
+[1] The paper is not well positioned. The title of this paper is about
+"stream processing system" and in the first paragraph, it refers Storm
+and Spark Streaming. Then suddenly the discussion goes solely for
+Spark Streaming. And from the techniques that this paper is proposing,
+it seems that tasks overhead and scheduling are specific to Spark
+Streaming implementation (rather than general stream processing
+        system). My impression is that Spark Stream is unique in the world of
+stream processing because it aims to provide fault tolerance by
+batching; so it may not be representative for stream processing
+systems.
+
+[2] More contexts are helpful for some discussion. In the task
+overhead section (2.1, page 2, left column), it mentioned 5 ms and 3.6
+ms; these values are presumably important to reason the improvement
+space. However, just by reading the paper, I wasn't able to figure out
+how important they are. Discretized Streams paper targets at
+O(second), so 5 ms seems negligible unless such task overhead
+accumulates. Not being an expert in Spark Streaming, I cannot judge;
+but the paper should make such points more clear. Similar concerns
+apply to the benchmarking in scheduling scalability -- the number
+120*1000/(batch interval) can hardly support the argument made in the
+paragraph unless more contexts are offered.
+
+[3] A systematic study of latency vs. throughput is desired. In
+Section 2.2, scheduling scalability, the paper informally discussed
+the trade-off of reducing batch interval and the throughput while this
+seems to be the core of this paper; thus a systematic study would make
+this paper more impactful.
+
+3.) What additional analysis or experiments would you like to see in
+the final version of this work?
+
+[1] Some motivating examples that do require tens of milliseconds
+latencies. It's of course simply intellectually satisfiable to study
+the low latency extremes in Spark Streaming, but understanding some
+requirements and demands imposed by applications would strengthen the
+argument of optimizing latency in Spark Streaming.
+
+[2] Timing breakdown in each batch interval. It would be awesome to
+see something similar to "OLTP Through the Looking Glass, and What We
+Found There" first so that we will know where the time goes. This
+would also help when reasoning the optimizations.
+
+[3] One part that is missing from this paper is about the
+fault-tolerance. What if the latency has been reduced to a certain
+level where it cannot tolerate any fault -- to recover from faults,
+the system needs to perform re-run of many operations. Although
+pushing the boundary of interactivity is interesting, it would be nice
+to know what has been sacrificed.
+
+Some further comments:
+
+- Not completely sure if we will see a red straight line in figure 3
+after the optimization. There will still be a limit where when the
+tasks generated per second exceeds, the system cannot handle it; thus
+the end-to-end increase would increase. Red line should be similar to
+black in its trend, but with turning points much later.
+
+- When I read the paper, I was trying to figure out what technique
+proposed in this paper is generic and what is only specific to Spark
+Streaming. I found that the majority is for Spark Streaming solely
+(maybe this is because I am not very familiar with many stream
+ processing systems). I would like to see more about the relevance and
+difference in related work section.
