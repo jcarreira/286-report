@@ -1,13 +1,17 @@
-personal_ws-1.1 en 27 
+personal_ws-1.1 en 34 
+topologies
 scalability
 deserializing
+taskBytes
 RDD
 updateDependencies
 RDMA
 abbrv
 MapReduce
 latencies
+rgb
 Neng
+taskJars
 discretized
 benchmarking
 workflow
@@ -16,13 +20,16 @@ codebase
 Joao
 RDDs
 Carreira
+taskFiles
 Hadoop
 Jian
 deserialization
 tuple
 deserialize
 analytics
+serializedTask
 deserialized
 InfiniBand
 benchmarked
 metadata
+darkgreen
