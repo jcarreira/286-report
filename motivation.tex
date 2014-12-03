@@ -1,4 +1,4 @@
-\team{I would merge this section with Introduction}
+
 
 \subsection{Task Overhead}
 
@@ -41,6 +41,8 @@ During our experiments, we found that when a task is not computation-intensive, 
 
 \subsection{Scheduling Scalability}
 
+A significant amount of work has been done on scheduling. Many contributions aim to develop schedulers that can provide guarantees like fairness or utilization of resources~\cite{}. Others focus on making the schedule scale and/or provide low-latency scheduling of tasks~\cite{Sparrow, CFS}.
+
 During the execution of a Spark Streaming application, the Driver (a central component of Spark) generates tasks periodically and adds them to the tail of a scheduling queue. This queue is continuously probed by the scheduler, which schedules by taking tasks from the queue and sending them to worker nodes for processing.
 As applications specify lower batch intervals to process results more quickly, the number of tasks added to the queue per unit of time increases. Eventually, the scheduler will be unable to keep up with the rate of tasks being added to the queue. This results in an indefinite increase in the average time to schedule a task, which is worse considering the fact that tasks in one batch have less time to be processed before the next batch is generated.
 From this observation, we can see that lower batch intervals lead to lower task latencies, less throughput and more tasks scheduled per second. On the other hand, larger batch intervals lead to higher throughput, higher task latencies and less tasks scheduled per second. 
@@ -51,7 +53,6 @@ With this configuration, Spark Streaming generates 120$*$1000/(batch interval) t
 Because we are solely interested in benchmarking the scheduling performance, we ran applications that generate no-op tasks.
 
 We have found that for a batch interval less than 40ms the system becomes unstable because the scheduler cannot keep up with the rate of tasks generated. This instability leads to increasingly higher scheduling delays and increasing garbage collection activity due to higher memory usage. \joao{Need a graph here showing end-to-end latency of tasks with varying batch intervals}
-
 
 \subsection{Network Overhead}
 As the number of tasks increases, so does the amount of communication between the driver and executors. We plan to increase the network throughput using InfiniBand, and also explore using RDMA to realize zero-copy. Ideally with these improvements, not only network communication will be faster, the driver will also have more CPU time to schedule tasks, ultimately reducing the latencies of running tasks.
