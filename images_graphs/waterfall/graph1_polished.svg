@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="504px" height="504px" viewBox="0 0 504 504" enable-background="new 0 0 504 504" xml:space="preserve">
+<text transform="matrix(1 0 0 1 20.1699 25.0498)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="24">A</tspan><tspan x="15.072" y="0" font-family="'Helvetica'" font-size="24">v</tspan><tspan x="26.472" y="0" font-family="'Helvetica'" font-size="24">e</tspan><tspan x="39.819" y="0" font-family="'Helvetica'" font-size="24">r</tspan><tspan x="47.572" y="0" font-family="'Helvetica'" font-size="24">age end−to−end latency (20ms batch)</tspan></text>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="29.01" y="68.39" width="429.3" height="387.57"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+</g>
+<text transform="matrix(1 0 0 1 38.54 468.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">A</tspan><tspan x="8.778" y="0" font-family="'Helvetica'" font-size="14">v</tspan><tspan x="15.428" y="0" font-family="'Helvetica'" font-size="14">e</tspan><tspan x="23.214" y="0" font-family="'Helvetica'" font-size="14">r</tspan><tspan x="27.736" y="0" font-family="'Helvetica'" font-size="14">age</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Latency</tspan></text>
+<text transform="matrix(1 0 0 1 98.2202 468.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Data</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Sent</tspan></text>
+<text transform="matrix(1 0 0 1 143.3501 468.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Block</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Gene</tspan><tspan x="34.248" y="16.8" font-family="'Helvetica'" font-size="14">r</tspan><tspan x="38.77" y="16.8" font-family="'Helvetica'" font-size="14">ated</tspan></text>
+<text transform="matrix(1 0 0 1 214.0601 468.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">BlockInfo</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Received</tspan></text>
+<text transform="matrix(1 0 0 1 282.6602 468.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Record to</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Schedule</tspan></text>
+<text transform="matrix(1 0 0 1 355.6201 468.8096)" font-family="'Helvetica'" font-size="14">Computation</text>
+<text transform="matrix(1.0748 0 0 1 463.9805 381.791)" font-family="'Helvetica'" font-size="9.3038">20%</text>
+<text transform="matrix(1.0748 0 0 1 463.9805 304.2705)" font-family="'Helvetica'" font-size="9.3038">40%</text>
+<text transform="matrix(1.0748 0 0 1 463.9805 226.7607)" font-family="'Helvetica'" font-size="9.3038">60%</text>
+<text transform="matrix(1.0748 0 0 1 463.9805 149.2412)" font-family="'Helvetica'" font-size="9.3038">80%</text>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="455.96" x2="458.31" y2="455.96"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="378.45" x2="458.31" y2="378.45"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="300.931" x2="458.31" y2="300.931"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="223.42" x2="458.31" y2="223.42"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="145.9" x2="458.31" y2="145.9"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="68.39" x2="458.31" y2="68.39"/>
+<line fill="none" stroke="#000000" stroke-width="1.12" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="455.96" x2="458.31" y2="455.96"/>
+<g>
+	<defs>
+		<rect id="SVGID_3_" x="29.01" y="68.39" width="429.3" height="387.57"/>
+	</defs>
+	<clipPath id="SVGID_4_">
+		<use xlink:href="#SVGID_3_"  overflow="visible"/>
+	</clipPath>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="455.96" x2="458.31" y2="455.96"/>
+	<rect x="44.91" y="68.39" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="387.57"/>
+	<rect x="104.53" y="68.39" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="7.75"/>
+	
+		<rect x="104.53" y="68.39" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="7.75"/>
+	<rect x="164.16" y="76.14" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="7.75"/>
+	
+		<rect x="164.16" y="76.14" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="7.75"/>
+	<rect x="223.78" y="83.89" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="23.251"/>
+	
+		<rect x="223.78" y="83.89" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="23.251"/>
+	<rect x="292.41" y="107.15" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="174.41"/>
+	
+		<rect x="292.41" y="107.15" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="174.41"/>
+	<rect x="370.04" y="281.55" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="174.41"/>
+	
+		<rect x="370.04" y="281.55" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="174.41"/>
+	<path clip-path="url(#SVGID_4_)" fill="#00526D" d="M402.66,455.96h39.75H402.66z"/>
+	
+		<path clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M402.66,455.96h39.75H402.66z"/>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="64.78" y1="68.39" x2="124.41" y2="68.39"/>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="124.41" y1="76.14" x2="184.03" y2="76.14"/>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="184.03" y1="83.89" x2="243.66" y2="83.89"/>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="243.66" y1="107.15" x2="313.333" y2="107.15"/>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="311.29" y1="281.55" x2="370.91" y2="281.55"/>
+	
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="362.91" y1="455.96" x2="422.54" y2="455.96"/>
+</g>
+<text transform="matrix(1.0748 0 0 1 47.54 257.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">100%</text>
+<text transform="matrix(1.0748 0 0 1 114.2202 94.0781)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">2%</text>
+<text transform="matrix(1.0748 0 0 1 174.2202 102.4521)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">2%</text>
+<text transform="matrix(1.0748 0 0 1 234.4702 102.4521)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">6%</text>
+<text transform="matrix(1.0748 0 0 1 298.4502 195.9307)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">45%</text>
+<text transform="matrix(1.0748 0 0 1 375.4492 372.5703)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">45%</text>
+<text transform="matrix(1.0748 0 0 1 46.54 58.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">43ms</text>
+<text transform="matrix(1.0748 0 0 1 109.2202 58.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">1ms</text>
+<text transform="matrix(1.0748 0 0 1 168.2202 58.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">1ms</text>
+<text transform="matrix(1.0748 0 0 1 227.4702 58.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">3ms</text>
+<text transform="matrix(1.0748 0 0 1 289.4492 58.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">19ms</text>
+<text transform="matrix(1.0748 0 0 1 351.4492 58.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">19ms</text>
+<text transform="matrix(1.0748 0 0 1 462.9805 70.9082)" font-family="'Helvetica'" font-size="9.3038">100%</text>
+</svg>
