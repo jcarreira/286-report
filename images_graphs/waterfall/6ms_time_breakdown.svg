@@ -2,7 +2,7 @@
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="511px" height="504px" viewBox="0 0 511 504" enable-background="new 0 0 511 504" xml:space="preserve">
+	 width="585px" height="528px" viewBox="0 0 585 528" enable-background="new 0 0 585 528" xml:space="preserve">
 <g>
 	<defs>
 		<rect id="SVGID_1_" x="29.01" y="92" width="429.3" height="375.48"/>
@@ -11,80 +11,80 @@
 		<use xlink:href="#SVGID_1_"  overflow="visible"/>
 	</clipPath>
 </g>
-<text transform="matrix(1.1401 0 0 1 463.9805 395.5303)" font-family="'Helvetica'" font-size="14">20%</text>
-<text transform="matrix(1.1401 0 0 1 463.9805 320.4404)" font-family="'Helvetica'" font-size="14">40%</text>
-<text transform="matrix(1.1401 0 0 1 463.9805 245.3438)" font-family="'Helvetica'" font-size="14">60%</text>
-<text transform="matrix(1.1401 0 0 1 463.9805 170.2456)" font-family="'Helvetica'" font-size="14">80%</text>
+<text transform="matrix(1.1401 0 0 1 523.9805 395.5303)" font-family="'Helvetica'" font-size="18">20%</text>
+<text transform="matrix(1.1401 0 0 1 523.9805 320.4404)" font-family="'Helvetica'" font-size="18">40%</text>
+<text transform="matrix(1.1401 0 0 1 523.9805 245.3438)" font-family="'Helvetica'" font-size="18">60%</text>
+<text transform="matrix(1.1401 0 0 1 523.9805 170.2456)" font-family="'Helvetica'" font-size="18">80%</text>
 <line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="467.48" x2="458.31" y2="467.48"/>
-<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="392.383" x2="458.31" y2="392.383"/>
-<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="317.293" x2="458.31" y2="317.293"/>
-<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="242.195" x2="458.31" y2="242.195"/>
-<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="167.098" x2="458.31" y2="167.098"/>
-<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="92" x2="458.31" y2="92"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="392.383" x2="517.94" y2="392.383"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="317.293" x2="517.94" y2="317.293"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="242.195" x2="517.94" y2="242.195"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="167.098" x2="517.94" y2="167.098"/>
+<line fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="92" x2="518.69" y2="92"/>
 <line fill="none" stroke="#000000" stroke-width="1.12" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="467.48" x2="458.31" y2="467.48"/>
 <g>
 	<defs>
-		<rect id="SVGID_3_" x="29.01" y="94" width="429.3" height="375.48"/>
+		<rect id="SVGID_3_" x="29.01" y="94" width="488.99" height="375.48"/>
 	</defs>
 	<clipPath id="SVGID_4_">
 		<use xlink:href="#SVGID_3_"  overflow="visible"/>
 	</clipPath>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="469.48" x2="458.31" y2="469.48"/>
-	<rect x="44.91" y="94" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="375.48"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#AAAAAA" stroke-width="1.31" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="29.01" y1="469.48" x2="518" y2="469.48"/>
+	<rect x="47.121" y="94" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="45.277" height="375.48"/>
 	
-		<rect x="44.91" y="94" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="375.48"/>
+		<rect x="47.121" y="94" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.277" height="375.48"/>
 	
-		<rect x="113.53" y="94" clip-path="url(#SVGID_4_)" fill="#DE1F26" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="108.893"/>
+		<rect x="125.282" y="94" clip-path="url(#SVGID_4_)" fill="#DE1F26" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.277" height="108.893"/>
 	
-		<rect x="113.53" y="94" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="108.893"/>
-	<rect x="178.16" y="202.893" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="3.754"/>
+		<rect x="125.282" y="94" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.277" height="108.893"/>
+	<rect x="198.898" y="202.893" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="45.277" height="3.754"/>
 	
-		<rect x="178.16" y="202.893" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="3.754"/>
-	<rect x="248.78" y="206.646" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="3.754"/>
+		<rect x="198.898" y="202.893" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.277" height="3.754"/>
+	<rect x="279.337" y="206.646" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="45.277" height="3.754"/>
 	
-		<rect x="248.78" y="206.646" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="3.754"/>
-	<rect x="322.41" y="210.401" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="7.508"/>
+		<rect x="279.337" y="206.646" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.277" height="3.754"/>
+	<rect x="363.205" y="210.401" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="45.276" height="7.508"/>
 	
-		<rect x="322.41" y="210.401" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="7.508"/>
-	<rect x="402.04" y="217.909" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="39.75" height="251.572"/>
+		<rect x="363.205" y="210.401" clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.276" height="7.508"/>
+	<rect x="453.907" y="217.909" clip-path="url(#SVGID_4_)" fill="#5F92A8" width="45.276" height="251.572"/>
 	
-		<rect x="402.25" y="217.909" clip-path="url(#SVGID_4_)" fill="#DE1F26" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="39.75" height="251.572"/>
-	<path clip-path="url(#SVGID_4_)" fill="#00526D" d="M402.66,469.48h39.75H402.66z"/>
+		<rect x="454.146" y="217.909" clip-path="url(#SVGID_4_)" fill="#DE1F26" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="45.276" height="251.572"/>
+	<path clip-path="url(#SVGID_4_)" fill="#00526D" d="M454.613,469.48h45.276H454.613z"/>
 	
 		<path clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M402.66,469.48h39.75H402.66z"/>
+		M454.613,469.48h45.276H454.613z"/>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="64.78" y1="94" x2="124.41" y2="94"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="69.753" y1="94" x2="137.675" y2="94"/>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="113.53" y1="202.893" x2="217.91" y2="202.893"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="125.282" y1="202.893" x2="244.175" y2="202.893"/>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="178.16" y1="206.646" x2="288.53" y2="206.646"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="198.898" y1="206.646" x2="324.614" y2="206.646"/>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="248.78" y1="210.5" x2="362.16" y2="210.5"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="279.337" y1="210.5" x2="408.481" y2="210.5"/>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="322.41" y1="218" x2="442" y2="218"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="363.205" y1="218" x2="499.423" y2="218"/>
 	
-		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="362.91" y1="469.48" x2="422.54" y2="469.48"/>
+		<line clip-path="url(#SVGID_4_)" fill="none" stroke="#000000" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="409.336" y1="469.48" x2="477.257" y2="469.48"/>
 </g>
 <text transform="matrix(1 0 0 1 56 33.7163)"><tspan x="0" y="0" font-family="'Helvetica-Bold'" font-size="20">A</tspan><tspan x="13.664" y="0" font-family="'Helvetica-Bold'" font-size="20">v</tspan><tspan x="24.287" y="0" font-family="'Helvetica-Bold'" font-size="20">e</tspan><tspan x="35.41" y="0" font-family="'Helvetica-Bold'" font-size="20">r</tspan><tspan x="42.993" y="0" font-family="'Helvetica-Bold'" font-size="20">age End−to−End Latency (6ms batch)</tspan></text>
-<text transform="matrix(1 0 0 1 39.54 481.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">A</tspan><tspan x="8.778" y="0" font-family="'Helvetica'" font-size="14">v</tspan><tspan x="15.428" y="0" font-family="'Helvetica'" font-size="14">e</tspan><tspan x="23.214" y="0" font-family="'Helvetica'" font-size="14">r</tspan><tspan x="27.736" y="0" font-family="'Helvetica'" font-size="14">age</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Latency</tspan></text>
-<text transform="matrix(1 0 0 1 115.2202 481.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Data</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Sent</tspan></text>
-<text transform="matrix(1 0 0 1 166.3501 481.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Block</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Gene</tspan><tspan x="34.248" y="16.8" font-family="'Helvetica'" font-size="14">r</tspan><tspan x="38.77" y="16.8" font-family="'Helvetica'" font-size="14">ated</tspan></text>
-<text transform="matrix(1 0 0 1 240.0601 481.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">BlockInfo</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Received</tspan></text>
-<text transform="matrix(1 0 0 1 314.6602 481.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Record to</tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Schedule</tspan></text>
-<text transform="matrix(1 0 0 1 388.6201 481.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="14">Scheduling + </tspan><tspan x="0" y="16.8" font-family="'Helvetica'" font-size="14">Computation</tspan></text>
-<text transform="matrix(1.1401 0 0 1 463.9805 93.9995)" font-family="'Helvetica'" font-size="14">100%</text>
-<text transform="matrix(1.0748 0 0 1 48.54 289.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">100%</text>
-<text transform="matrix(1.0748 0 0 1 43.7798 79.918)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">386ms</text>
-<text transform="matrix(1.0748 0 0 1 113.46 79.918)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">112ms</text>
-<text transform="matrix(1.0748 0 0 1 183.46 79.918)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">4ms</text>
-<text transform="matrix(1.0748 0 0 1 253.71 79.918)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">4ms</text>
-<text transform="matrix(1.0748 0 0 1 329.6895 79.918)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">8ms</text>
-<text transform="matrix(1.0748 0 0 1 404.6895 79.918)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">258ms</text>
-<text transform="matrix(1.0748 0 0 1 120.2202 148.8262)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">29%</text>
-<text transform="matrix(1.0748 -0.0039 0.0037 1 407.708 348.8896)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">67%</text>
-<text transform="matrix(1.0748 -0.0039 0.0037 1 189.46 223.8896)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">1%</text>
-<text transform="matrix(1.0748 -0.0039 0.0037 1 259 225.8896)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">1%</text>
-<text transform="matrix(1.0748 -0.0039 0.0037 1 332.6895 230.8896)" font-family="'MyriadPro-BoldCond'" font-size="16.7469">2%</text>
+<text transform="matrix(1 0 0 1 29.54 486.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="18">A</tspan><tspan x="11.286" y="0" font-family="'Helvetica'" font-size="18">v</tspan><tspan x="19.836" y="0" font-family="'Helvetica'" font-size="18">e</tspan><tspan x="29.847" y="0" font-family="'Helvetica'" font-size="18">r</tspan><tspan x="35.661" y="0" font-family="'Helvetica'" font-size="18">age</tspan><tspan x="0" y="21.6" font-family="'Helvetica'" font-size="18">Latency</tspan></text>
+<text transform="matrix(1 0 0 1 124.2202 486.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="18">Data</tspan><tspan x="0" y="21.6" font-family="'Helvetica'" font-size="18">Sent</tspan></text>
+<text transform="matrix(1 0 0 1 178.3501 486.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="18">Block</tspan><tspan x="0" y="21.6" font-family="'Helvetica'" font-size="18">Gene</tspan><tspan x="44.033" y="21.6" font-family="'Helvetica'" font-size="18">r</tspan><tspan x="49.847" y="21.6" font-family="'Helvetica'" font-size="18">ated</tspan></text>
+<text transform="matrix(1 0 0 1 268.0605 486.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="18">BlockInfo</tspan><tspan x="0" y="21.6" font-family="'Helvetica'" font-size="18">Received</tspan></text>
+<text transform="matrix(1 0 0 1 351.6602 486.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="18">Record to</tspan><tspan x="0" y="21.6" font-family="'Helvetica'" font-size="18">Schedule</tspan></text>
+<text transform="matrix(1 0 0 1 434.6201 486.8096)"><tspan x="0" y="0" font-family="'Helvetica'" font-size="18">Scheduling + </tspan><tspan x="0" y="21.6" font-family="'Helvetica'" font-size="18">Computation</tspan></text>
+<text transform="matrix(1.1401 0 0 1 523.9805 93.9995)" font-family="'Helvetica'" font-size="18">100%</text>
+<text transform="matrix(1.0748 0 0 1 49.54 289.8262)" font-family="'MyriadPro-BoldCond'" font-size="18">100%</text>
+<text transform="matrix(1.0748 0 0 1 48.7798 79.918)" font-family="'MyriadPro-BoldCond'" font-size="18">386ms</text>
+<text transform="matrix(1.0748 0 0 1 127.46 79.918)" font-family="'MyriadPro-BoldCond'" font-size="18">112ms</text>
+<text transform="matrix(1.0748 0 0 1 207.46 79.918)" font-family="'MyriadPro-BoldCond'" font-size="18">4ms</text>
+<text transform="matrix(1.0748 0 0 1 289.71 79.918)" font-family="'MyriadPro-BoldCond'" font-size="18">4ms</text>
+<text transform="matrix(1.0748 0 0 1 371.6895 79.918)" font-family="'MyriadPro-BoldCond'" font-size="18">8ms</text>
+<text transform="matrix(1.0748 0 0 1 457.6895 79.918)" font-family="'MyriadPro-BoldCond'" font-size="18">258ms</text>
+<text transform="matrix(1.0748 0 0 1 132.2202 148.8262)" font-family="'MyriadPro-BoldCond'" font-size="18">29%</text>
+<text transform="matrix(1.0748 -0.0039 0.0037 1 461.708 348.8896)" font-family="'MyriadPro-BoldCond'" font-size="18">67%</text>
+<text transform="matrix(1.0748 -0.0039 0.0037 1 209.46 223.8896)" font-family="'MyriadPro-BoldCond'" font-size="18">1%</text>
+<text transform="matrix(1.0748 -0.0039 0.0037 1 292 225.8896)" font-family="'MyriadPro-BoldCond'" font-size="18">1%</text>
+<text transform="matrix(1.0748 -0.0039 0.0037 1 374.6895 231.8896)" font-family="'MyriadPro-BoldCond'" font-size="18">2%</text>
 </svg>

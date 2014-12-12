@@ -1,7 +1,7 @@
 labels              values
-'Average\nTotal'    100
-Socket              -17
-BlockGenerator      -0
-'Receiver\nTracker' -3
+"Average\nTotal"    100
+Socket              -29
+BlockGenerator      -1
+"Receiver\nTracker" -1
 ScheduledInput      -2
-'Last step'         -78
+'Last step'         -67
