@@ -1,14 +1,13 @@
 \noindent
 
 Some data analytics applications, like intrusion detection, web search and sensor actuation,
-require the computation of results in a timely fashion in order to provide interactivity and fast response.
+require the computation of results in a timely fashion in order to provide interactivity and react to events in a timely fashion.
 Several data analytics systems~\cite{Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,Condie:2010:MO:1855711.185573,Brito:2011:SLD:2114498.2116192} provide easy-to-use and deploy frameworks for these types of applications. 
-Systems like Storm or XX handle streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. 
+Systems like Storm or XX \team{fill} handle streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. 
 Others, like Spark Streaming offer processing capabilities with micro-batches, where records are coalesced into small groups before being consumed together.
 
-In this paper we argue that it is possible to support low-latency and high throughput streaming applications with a general-purpose framework like Spark.
-Even though the focus of our analysis is in Spark Streaming and Spark, we believe that our analysis and conclusions can inform the design and 
-improvement of other systems that follow the micro-batch approach.
+In this paper we show that it is possible to support low-latency and high throughput streaming applications with a general-purpose framework like Spark.
+Even though the focus of our analysis is in Spark Streaming and Spark, we believe that our analysis and conclusions can inform the design and development of other Streaming systems.
 
 % Unless it is explicitly stated, throughout the paper we refer to tasks latency as the time it takes from the time the data from a stream is received to the time the result of processing that data is returned to the user.
 

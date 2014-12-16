@@ -1,4 +1,19 @@
 
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.30]{images_graphs/waterfall/6ms_time_breakdown.pdf}
+  \end{center}
+  \caption{}
+  \label{fig:SparkStreaming_time_breakdown}
+\end{figure}
+
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.30]{images_graphs/batchsize_vs_latency/batchsize_vs_latency3.pdf}
+  \end{center}
+  \caption{}
+  \label{fig:Batchsize_vs_latency}
+\end{figure}
 
 \subsection{Task Overhead}
 
@@ -14,22 +29,6 @@ For every Spark Streaming application, there is a driver and multiple executors.
 
 During our experiments, we found that when a task is not computation-intensive, the majority of the time in running the task is spent in deserialization. When running tasks with no-op operations, we found that from the driver's perspective, the time it takes for a task to be scheduled to the time it takes for the result to be received is 5ms. However, approximately 3.6ms out of this time is spent deserializing the task. These metrics mean that if we can reduce the task deserialization time, there will be a considerable improvement to the latency of small tasks.
 \jianneng{We should show a more principled approach of getting to these results/conclusions. Here we should setup an experiment, explain how it was run, run it and show graphs with results. From this experiment and graphs come the conclusions. I tried to do this below in the "Scheduling scalability" benchmark}
-
-\begin{figure}[t!]
-  \begin{center}
-    \includegraphics[scale=0.30]{images_graphs/spark_diagram.png}
-  \end{center}
-  \caption{Diagram of a Spark Streaming execution}
-  \label{fig:deserialization}
-\end{figure}
-
-\begin{figure}[t!]
-  \begin{center}
-    \includegraphics[scale=0.30]{images_graphs/time_breakdown.png}
-  \end{center}
-  \caption{Spark streaming task time breakdown (Dummy)}
-  \label{fig:deserialization}
-\end{figure}
 
 \begin{figure}[t!]
   \begin{center}
