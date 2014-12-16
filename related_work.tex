@@ -1,11 +1,15 @@
-\team{May be a good idea to push this to the beginning of the paper to show that not everything we are doing has been done before. Perhaps after motivation}
 
-\paragraph {\bf Scheduling} Scheduling papers (policies, scalability, low-latency) go here~\cite{Sparrow}
-
-%\paragraph {\bf Streaming} Streaming systems go here. A big portion of these are not low-latency. Those that are better have some limitation that Spark Streaming does not.
+\paragraph {\bf Streaming Systems} 
 
 \paragraph {\bf Something more databases oriented, e.g., dataflows?}
 
-\paragraph {\bf Approximate Query Engines} Past work \cite{BlinkDB, OnlineAggregation} has focused on providing answers within a desired confidence interval to reduce the computation time and achieve fast response times. Our techniques focus instead on reducing the overheads of analytics systems.
+\paragraph {\bf Faster queries} Past work
+has focused on reducing the time to query data. Systems like \cite{BlinkDB, OnlineAggregation} take the approach of performing computation over a sample of the data.
+Others~\cite{Incoop} perform computation incrementally in order to avoid repeating previous computations. 
+We see these techniques as complementary to our work, they can be used to reduce the overall time of streaming computations.
 
-
+\paragraph {\bf Scheduling} Extensive research has been done on how to improve the scheduling of tasks in Map Reduce frameworks. 
+Systems like~\cite{Sparrow} focus especifically on scenarios where the number of tasks to be scheduled is very high.
+Even though we haven't identified the scheduler of Spark Streaming as an immediate bottleneck,
+we believe techniques like decentralized scheduling can be useful.
+As tasks get shorter the scheduler may be forced to schedule more tasks per unit of time.

@@ -19,4 +19,4 @@ Once this batch job is generated it is appended to a queue of jobs to be schedul
 The scheduler continuously polls this queue and schedules the jobs in the machines available in the cluster
 Jobs are run in stateless isolated environments called Executors. Executors are usually deployed in the same nodes as Receivers.  \joao{is it always like this?}.
 
-
+Internally, Spark Streaming makes extensive use of Actors -- a design pattern that decouples the invocation of methods from their execution. This means that 
