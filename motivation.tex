@@ -1,10 +1,12 @@
 \begin{figure}[t!]
   \begin{center}
-    \includegraphics[scale=0.40]{images_graphs/waterfall/Rplots_illustrator.pdf}
+    \includegraphics[scale=0.35]{images_graphs/batchsize_vs_latency/batchsize_vs_latency_illustrator.pdf}
   \end{center}
-  \caption{}
-  \label{fig:SparkStreaming_time_breakdown}
+  \caption{\joao{Maybe put the legend inside the graph so the graph can be larger?}}
+  \label{fig:Batchsize_vs_latency}
 \end{figure}
+
+
 
 To better understand the performance and limitations of Spark Streaming we conducted a benchmark study of the system.
 
@@ -39,10 +41,17 @@ A task is generated periodically, according to a user-defined frequency, and sch
 
 \begin{figure}[t!]
   \begin{center}
-    \includegraphics[scale=0.35]{images_graphs/batchsize_vs_latency/batchsize_vs_latency_illustrator.pdf}
+    \includegraphics[scale=0.40]{images_graphs/waterfall/Rplots_illustrator.pdf}
   \end{center}
-  \caption{\joao{Maybe put the legend inside the graph so the graph can be larger?}}
-  \label{fig:Batchsize_vs_latency}
+  \caption{}
+  \label{fig:SparkStreaming_time_breakdown}
+\end{figure}
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.40]{images_graphs/cdf_latencies/cdf_e2e_times.pdf}
+  \end{center}
+  \caption{}
+  \label{fig:CDF_latencies}
 \end{figure}
 
 We have instrumented the code of Spark Streaming to record the time at which the record transitions a phase (e.g., a task to process a record is scheduled).

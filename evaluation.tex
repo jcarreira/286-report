@@ -1,17 +1,17 @@
 Having conducted various benchmarks of Spark Streaming for this research, we have found various parameters that can be used to tune the performance of the system. These parameters including the number of Receivers, the batch window size, the size of input records, and whether the input data is serialized. In this section we will describe in detail about their impacts on the end-to-end latency or throughput. While the termologies of these parameters are specific to Spark Streaming, we believe that they are in general applicable to stream processors that are distributed or follow the micro-batch model.
 
-\subsection{Number of Receivers}
+\paragraph{Number of Receivers}
 In our synthetic benchmark using 20-byte records, a single Receiver is able to take in at most around 30MB/s, or 1.5M records/s, even after we modified the code to immediate drop instead of storing the data. While the throughput does not seem very high in terms of MBs, 1.5M records is 2.5 times the 600K records per second per node recorded by the original Spark Streaming paper. This insight tells us that when evaluating throughput of a system, both the volume of data as well as the size of input data should be taken into consideration.
 
 To overcome the bottleneck in data intake, the solution can be as simple as increasing the number of receivers. It is also possible to obtain the performance gain by setting the number of Receivers larger than the number of physical machines. \joao{elaborate?}
 
-\subsection{Size of Input Records}
+\paragraph{Size of Input Records}
 As explained by the previous subsection, the size of input records affect the system's performance in terms of throughput. As the size of the records increases, the throughput of the system in volume will also increase (\team{linearly?}) to a point. \team{need to show to what this point is}
 
-\subsection{Size of Batch Interval}
+\paragraph{Size of Batch Interval}
 While the micro-batch approach increases throughput at the expense of latency by coalescing input data before processing, the size of the batch interval does not form a linear relationship with the throughput. In fact, the best latency is obtained when the batch interval is set to slightly larger than the time it takes to computationally process a batch. This difference accounts for overheads in task spawning, scheduling, and noise.
 
-\subsection{Input Serialization}
+\paragraph{Input Serialization}
 In Section 3, we evaluated the system using plain text input records. However, in real world applications, applications may choose to serialize their input data for better network latency. Serializing input data means they have to be deserialized during computation, so this decision concerns the trade-off between CPU and network I/O.
 
 In the case of Spark Streaming, if the input data is serialized, it has the option to be directly stored inside the system as a block, bypassing the block interval and logic to convert stored records into blocks. Not surprisingly, this approach increases the rate at which Spark Streaming can intake data significantly. For the same benchmark with 20-byte records, Spark Streaming can sustain a throughput of 80MB/s, or 16M records per second using a single receiver.
