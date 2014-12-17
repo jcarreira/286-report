@@ -34,7 +34,7 @@ To breakdown the process of running desks, we modified the receiver so that it g
  \begin{center}
    \includegraphics[scale=0.30]{images_graphs/deserialization.eps}
  \end{center}
- \caption{How a task is deserialized on the executor. \jianneng{expand this caption? The diagram is interesting and this description can be more developed. E.g., its not clear what the dependencies are}}
+ \caption{How a task is deserialized on the executor. Examples of new dependencies can be new libraries needed to run the current task.}
  \label{fig:deserialization}
 \end{figure}
 
@@ -44,7 +44,7 @@ Having discovered that a significant portion of the time running small tasks is 
  \begin{center}
    \includegraphics[scale=0.60]{images_graphs/optimizations/graph2/task_deser_micro.pdf}
  \end{center}
- \caption{caption}
+ \caption{Breakdown of averege time spent deserializing a task before and after adding lazy instantiation of configuration object and caching task binaries.}
  \label{fig:deserialization_times}
 \end{figure}
 
@@ -63,9 +63,9 @@ The improvements of the two optimizations described above are also shown in Figu
 
 \begin{figure}[t!]
  \begin{center}
-   \includegraphics[scale=0.45]{images_graphs/optimizations/graph3/runtime_optimizations.pdf}
+   \includegraphics[scale=0.60]{images_graphs/optimizations/graph3/runtime_optimizations.pdf}
  \end{center}
- \caption{caption}
+ \caption{Average time spent in running no-op tasks before and after the optimizations in deserialization.}
  \label{fig:runtime_optimizations}
 \end{figure}
 
@@ -73,9 +73,9 @@ To show the effect of reducing task runtimes, we performed a micro-benchmark run
 
 \begin{figure}[t!]
  \begin{center}
-   \includegraphics[scale=0.45]{images_graphs/optimizations/graph1/lazy_micro.pdf}
+   \includegraphics[scale=0.50]{images_graphs/optimizations/graph1/lazy_micro.pdf}
  \end{center}
- \caption{caption}
+ \caption{Amount of time spent running a single Spark stage consisting of many tasks without and with lazy instantiation of configuration object.}
  \label{fig:lazy_micro}
 \end{figure}
 

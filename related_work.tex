@@ -4,8 +4,8 @@ The original Spark Streaming~\cite{SparkStreaming} paper placed emphasis on faul
 \paragraph {\bf Adaptive Batch Sizes} TelegraphCQ~\cite{TelegraphCQ} is a system designed for a volatile environment, and can make per-tuple and per-operator routing decisions to balance load. \cite{das2014adaptive} studies the effect of batch sizes and other parameters on the throughput and end-to-end latency of the system, and proposes an algorithm based on Fixed-Point Iteration to automatically adapt batch sizes as the circumstance varies. Although there is currently no such mechanism implemented in Spark Streaming, adaptive batch sizes can be very useful in determining the right value for the best trade-offs.
 
 \paragraph {\bf Low Latency} Some past work has focused on reducing the time to show results. Systems like BlinkDB~\cite{BlinkDB} perform computations on samples of the data and return prematurely with error bars, while ideas like online aggregation~\cite{OnlineAggregation} show current results as the query goes to completion.
-Others systems such as Incoop~\cite{Incoop} perform computation incrementally in order to avoid repeating previous computations. 
 While we did not sample data in our research, we see these techniques as complementary to our work, as they can be used to reduce the overall time of streaming computations.
+Others systems such as Incoop~\cite{Incoop} perform computation incrementally in order to avoid repeating previous computations. Storm~\cite{Storm} also a real-time, fault-tolerant distributed stream processing system that allows record-at-a-time approach for low latency.
 
 \paragraph {\bf Scheduling} Extensive research has been done on how to improve the scheduling of tasks in MapReduce frameworks. 
 Systems like Sparrow~\cite{Sparrow} focus specifically on scenarios where the number of tasks to be scheduled is very large.
