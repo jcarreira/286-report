@@ -1,35 +1,17 @@
-\noindent
-
-Some data analytics applications, like intrusion detection, web search and sensor actuation,
+\noindent Some data analytics applications, like intrusion detection, web search and sensor actuation,
 require the computation of results in a timely fashion in order to provide interactivity and timely reaction to events.
 Several data analytics systems~\cite{Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,Condie:2010:MO:1855711.185573,Brito:2011:SLD:2114498.2116192} provide easy-to-use and deploy frameworks for these types of applications. 
 Systems like Storm or XX \team{fill} handle streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. 
 Others, like Spark Streaming offer processing capabilities with micro-batches, where records are coalesced into small groups before being consumed together.
 
-In this paper we show that it is possible to support O(10)-latency and high throughput streaming applications with a general-purpose framework like Spark.
-Even though the focus of our analysis is in Spark Streaming and Spark, we believe that our analysis and conclusions can inform the design and development of other Streaming systems.
+In this paper we show that it is possible to support high throughput as well as latencies in the order of 10s of milliseconds running streaming applications with a general-purpose framework like Spark.
+Even though the focus of our analysis is in Spark Streaming, we believe that our analysis and conclusions can inform the design and development of other streaming systems using the micro-batch architecture.
 
 % Unless it is explicitly stated, throughout the paper we refer to tasks latency as the time it takes from the time the data from a stream is received to the time the result of processing that data is returned to the user.
 
-% TODO:
-% Why are we focusing on Spark Streaming?
-%
-%
-Spark Streaming, the focus of our work, is a stream processing engine built on top of Spark~\cite{Spark}, a general-purpose engine for large-scale data processing. 
-It implements the discretized stream (D-Stream) abstraction, and uses a micro-batch approach to process data as it is received. 
-Data is captured by specific applications, called receivers. 
-Receivers are responsible for connecting to the source of data, setting up a Spark Streaming execution and specifying how often to process received records. 
-Spark Streaming creates a batch job after a specific amount of time (every  \emph{batchInterval} milliseconds), and processes the data received by all receivers during that period. 
-Every batch job is divided into map and reduce stages, each of which contains tasks that need to be scheduled.
-At the heart of the micro-batches approach taken by Spark is a tradeoff between the amount of records Spark can process per unit of time and the time the system takes to return to the user the result of processing a stream record.
-On one hand, waiting for more records to generate bigger batches allows Spark Streaming to amortize its overheads. On the other hand, the more time the system waits for data, the less responsive the system is.
-
-% Dont need to explain what is a block interval. Too low level for an introduction
-%Internally, a variable called block interval controls the period of time before a receiver generates a new block. The total number of blocks generated in a batch interval corresponds to the number of tasks spawned for every stage of the resulting batch job.
-
 In this paper we perform an in-depth analysis of Spark Streaming, and evaluate the system's ability to provide low-latency and high throughput stream processing.
-In particular we intend to answer the question: "Are the limitations of Spark Streaming's performance a fundamental result of its architecture, or the result of design decisions"?
-We show that by addressing some of Spark Streaming architectural deficiencies Spark Streaming can provide O(millisecond) latencies and O(100K/sec) throughput for realistic workloads. 
+In particular we intend to answer the question: ``Are the limitations of Spark Streaming's performance a fundamental result of its architecture, or the result of design decisions"?
+We show that by addressing some of Spark Streaming architectural deficiencies Spark Streaming can provide O(millisecond) latencies and O(100K records/sec) throughput per node for realistic workloads. 
 
 %More specifically, we focus on three main areas of improvements. The first area is to reduce the overhead of running tasks. As tasks are executed, there are a number of inefficiencies in terms of sending duplicate data and performing redundant computations. The second area is the scheduling scalability. Currently, Spark uses a centralized scheduler, which becomes a bottleneck as the number of tasks needed to be scheduled increases with the increase in number of receivers or decrease in the block interval. The third area of focus is the network overhead. The amount of network communication is proportional to the number of tasks running concurrently. We propose an enhancement that uses newer technology such as InfiniBand to reduce the transmission delay, or remote direct memory access (RDMA) to relieve the burden of sending and receiving network packets from the driver CPU.
 
@@ -39,4 +21,3 @@ In Section 3 we present a performance study of Spark Streaming across two main d
 In Section 4 we present some optimizations aimed at solving some of the architectural deficiencies identified in the previous section.
 In Section 5 we distill our work into a set of lessons about Spark Streaming and low-latency streaming systems.
 Finally, in section 6 we conclude.
-
