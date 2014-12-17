@@ -23,7 +23,7 @@ We believe that this is in line with the type of computations used with Spark St
 First, typical streaming tasks consist of filtering and/or simple aggregations.
 These are operations that scale linearly with the amount of data in each batch.
 Secondly, there is extensive work on optimizing the performance of query processing, both in batch and streaming contexts.
-Finally, many steps of the computations performed in Spark and Spark Streaming are embarrassly parallel. 
+Finally, many steps of the computations performed in Spark and Spark Streaming are embarrassingly parallel. 
 This means that developers can throw more hardware at the problem to get better performance. 
 However, to provide low-latency such approach is not enough. 
 The underlying stream processing system is likely to quickly become the bottleneck.

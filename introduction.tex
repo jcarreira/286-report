@@ -1,5 +1,5 @@
 Some data analytics applications, like intrusion detection, web search and sensor actuation, require the computation of results in a timely fashion in order to provide interactivity and responsiveness. 
-Because enterprise workflows are increasingly complex and applications increasinly rely on higher number of other applications, the performance systems become a major concern.
+Because enterprise workflows are increasingly complex and applications increasingly rely on higher number of other applications, the performance systems become a major concern.
 For instance, many systems today are designed to meet specific performance metrics or SLOs~\cite{Jockey}.
 Applications that do not provide good performance may stall the execution of other systems and lead to loss of revenue or unhappy users.
 
@@ -7,7 +7,7 @@ Several data analytics
 systems~\cite{Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,Condie:2010:MO:1855711.185573,Brito:2011:SLD:2114498.2116192} 
 provide easy-to-use and deploy frameworks for streaming processing.
 Systems like Storm or TelegraphCQ handle streams of data by creating pipelines for record-at-a-time processing. In this environment, data flows through the system, potentially through different machines, and data is continuously processed and augmented.
-Systems like Spark Streaming rely on micro-batches. In micro-batch systems records are coalesced into small groups before being processd together.
+Systems like Spark Streaming rely on micro-batches. In micro-batch systems records are coalesced into small groups before being processed together.
 
 It is widely believed that to provide low-latency latency, applications should use the record-at-a-time approach, while for the highest throughput, the micro-batch model is more appropriate. 
 While record-at-a-time systems can start processing data as soon as it is received, these types of systems have serious disadvantages when compared with other approaches (see table X).
