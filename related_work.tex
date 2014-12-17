@@ -9,7 +9,7 @@ Others~\cite{Incoop} perform computation incrementally in order to avoid repeati
 We see these techniques as complementary to our work, they can be used to reduce the overall time of streaming computations.
 
 \paragraph {\bf Scheduling} Extensive research has been done on how to improve the scheduling of tasks in Map Reduce frameworks. 
-Systems like~\cite{Sparrow} focus especifically on scenarios where the number of tasks to be scheduled is very high.
+Systems like~\cite{Sparrow} focus specifically on scenarios where the number of tasks to be scheduled is very high.
 Even though we haven't identified the scheduler of Spark Streaming as an immediate bottleneck,
 we believe techniques like decentralized scheduling can be useful.
 As tasks get shorter the scheduler may be forced to schedule more tasks per unit of time.

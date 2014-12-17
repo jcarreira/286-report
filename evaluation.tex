@@ -2,6 +2,6 @@
 
 In this section we show that Spark Streaming is able to provide low end-to-end batch response times for a realistic and demanding workload. We also show that our contributions decrease the average batch latency by Y times and increases the scalability of the system from X tasks/s to Y tasks/s.
 
-In order to evaluate our contributions we have setup an instance of Spark Streaming to process a stream of tweets from Twitter. In our setup Spark Streaming runs in a dedicated cluter of 16 nodes. Each node has 16 cores  Intel IvyBridge 3.0GHz with 64Gb of RAM. The nodes are interconnected with Infiniband connections. We ran this experiment with 1 driver, 15 workers and X receivers.
+In order to evaluate our contributions we have setup an instance of Spark Streaming to process a stream of tweets from Twitter. In our setup Spark Streaming runs in a dedicated cluster of 16 nodes. Each node has 16 cores  Intel IvyBridge 3.0GHz with 64GB of RAM. The nodes are interconnected with InfiniBand connections. We ran this experiment with 1 driver, 15 workers and X receivers.
 
-\paragraph {\bf Twitter Workload} To approximate as much as possible a real workload we have built a custom twitter receiver. This receiver listens for tweets using the standard Twitter API. Because this API samples the tweets (roughly 1\% of the tweets are published), everytime we receive tweets from this 
+\paragraph {\bf Twitter Workload} To approximate as much as possible a real workload we have built a custom twitter receiver. This receiver listens for tweets using the standard Twitter API. Because this API samples the tweets (roughly 1\% of the tweets are published), every time we receive tweets from this 

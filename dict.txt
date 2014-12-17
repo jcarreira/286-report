@@ -1,24 +1,36 @@
-personal_ws-1.1 en 34 
+personal_ws-1.1 en 47 
 topologies
 scalability
 deserializing
 taskBytes
 RDD
+Streaming's
 updateDependencies
+Dataset
 RDMA
+natively
 abbrv
 MapReduce
 latencies
+broadcasted
+timestamp
+stateful
+API
 rgb
+batchInterval
+throughputs
 Neng
 taskJars
 discretized
 benchmarking
 workflow
 dataflows
+runtime
 codebase
 Joao
+optimizations
 RDDs
+IvyBridge
 Carreira
 taskFiles
 Hadoop
@@ -30,6 +42,7 @@ analytics
 serializedTask
 deserialized
 InfiniBand
+runtimes
 benchmarked
 metadata
 darkgreen
