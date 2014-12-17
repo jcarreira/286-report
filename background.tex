@@ -2,6 +2,13 @@
 % Why are we focusing on Spark Streaming?
 %
 To understand our work, we provide a short description of Spark Streaming's architecture.
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.35]{images_graphs/spark_architecture_v4.eps}
+  \end{center}
+  \caption{Diagram of a Spark Streaming work flow. A Receiver and an Executor may execute in the same node.}
+  \label{fig:SparkStreaming_architecture}
+\end{figure}
 
 Spark~\cite{Spark} is a general-purpose engine for large-scale cluster computing. It operates on Resilient Distributed Datasets (RDDs), an abstraction that represents read-only collections of objects partitioned across a set of machines. RDDs can be created from raw data or other RDDs. 
 RDDs keep track of the bulk operations (e.g., map and reduce) performed on data (lineage) so that partitions can be recomputed if they are lost due to failures. 
@@ -12,13 +19,6 @@ It implements an abstraction called discretized streams (D-Streams), which takes
 %which take advantage of RDDs to provide fast recovery after failures. 
 The abstraction allows a micro-batch approach to streaming data, yielding high throughput, scalability and fault-tolerance.
 
-\begin{figure}[t!]
-  \begin{center}
-    \includegraphics[scale=0.35]{images_graphs/spark_architecture_v4.eps}
-  \end{center}
-  \caption{Diagram of a Spark Streaming work flow. A Receiver and an Executor may execute in the same node.}
-  \label{fig:SparkStreaming_architecture}
-\end{figure}
 
 The execution of a Spark Streaming job works as depicted in Figure~\ref{fig:SparkStreaming_architecture}. 
 First, data is generated at a source (e.g., tweets from Twitter). As the data is generated, it is pushed to Spark Streaming, and is received by a Receiver. 

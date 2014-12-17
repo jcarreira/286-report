@@ -1,6 +1,6 @@
 As we see from Section 3, majority of the time processing a record is spent in receiving, scheduling, and computation. In our experiments, we found that the rate at which the receiver can receive input does not increase significantly even if it drops every record. Therefore, we did not treat this bottleneck as a problem fundamental within the architecture, and focused on scheduling and computation in our optimizations.
 
-\subsection{Scheduling Scalability}
+%\subsection{Scheduling Scalability}
 
 %A significant amount of work has been done on scheduling. Many contributions aim to develop schedulers that can provide guarantees like fairness or utilization of resources~\cite{}. Others focus on making the schedule scale and/or provide low-latency scheduling of tasks~\cite{Sparrow, CFS}.
 %
@@ -15,12 +15,12 @@ As we see from Section 3, majority of the time processing a record is spent in r
 %
 %We have found that for a batch interval less than 40ms the system becomes unstable because the scheduler cannot keep up with the rate of tasks generated. This instability leads to increasingly higher scheduling delays and increasing garbage collection activity due to higher memory usage. \joao{Need a graph here showing end-to-end latency of tasks with varying batch intervals}
 
-To enable a higher scheduling rate of tasks by Spark Streaming, we propose to 1) schedule all tasks per worker in bulk and 2) physically decouple the scheduling (Scheduler) of tasks from their generation (Driver).
-First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message. This reduces the serialization and networking overheads that result from sending many small messages.
-Secondly, as the task generation rate surpasses the scheduling rate, the driver elastically spawns schedulers in remote physical nodes. Thereafter, tasks are forwarded, according to some policy, to these newly spawned schedulers for scheduling (see Figure \ref{fig:schedarch}). 
-
-We have implemented this decentralized architecture in Spark Streaming. Due to the instability of connections between the schedulers, the driver and the workers -- connections are dropped after running the system for a few minutes -- we are currently not able to evaluate the performance benefits of this technique. We plan to fix this engineering problem and report on further results.
-
+%To enable a higher scheduling rate of tasks by Spark Streaming, we propose to 1) schedule all tasks per worker in bulk and 2) physically decouple the scheduling (Scheduler) of tasks from their generation (Driver).
+%First, at each scheduling stage, instead of sending multiple tasks for each node separately, we coalesce them into the same message. This reduces the serialization and networking overheads that result from sending many small messages.
+%Secondly, as the task generation rate surpasses the scheduling rate, the driver elastically spawns schedulers in remote physical nodes. Thereafter, tasks are forwarded, according to some policy, to these newly spawned schedulers for scheduling (see Figure \ref{fig:schedarch}). 
+%
+%We have implemented this decentralized architecture in Spark Streaming. Due to the instability of connections between the schedulers, the driver and the workers -- connections are dropped after running the system for a few minutes -- we are currently not able to evaluate the performance benefits of this technique. We plan to fix this engineering problem and report on further results.
+%
 \subsection{Task overheads}
 
 Since our synthetic benchmark performed trivial computation, most of the time spent in the ``computation" part of the graph should be due to the overheads in launching and running tasks. 
