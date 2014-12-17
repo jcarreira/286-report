@@ -56,7 +56,7 @@ To eliminate this round trip, we experimented with caching of \texttt{taskBytes}
 In \texttt{updateDependencies()}, the current implementation creates a new Hadoop configuration object regardless of whether new dependencies are introduced. However, this objection creation is very costly in CPU cycles. Moreover, since a streaming application rarely introduces new dependencies once it starts to run, this method is incurring unnecessary costs. To solve this problem, we changed the object to be lazily instantiated, so that no cycles are spent creating the configuration object unless new dependencies are introduced.
 
 \subsubsection{Evaluation}
-The improvements of the two optimizations described above are also shown in figure \ref{fig:deserialization_times}. After the changes, deserialization time for a task decreased from 3.6ms to 0.2ms. The impact of the two changes on overall task runtime is reflected in figure \ref{fig:runtime_optimizations}.
+The improvements of the two optimizations described above are also shown in Figure \ref{fig:deserialization_times}. After the changes, deserialization time for a task decreased from 3.6ms to 0.2ms. The impact of the two changes on overall task runtime is reflected in Figure \ref{fig:runtime_optimizations}.
 
 \begin{figure}[t!]
  \begin{center}
