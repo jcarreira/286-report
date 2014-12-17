@@ -55,11 +55,11 @@ In order to reduce the amount of duplicate data transferred, Spark 1.1.0 wraps t
 
 To eliminate this round trip, we experimented with caching of \texttt{taskBytes}. The cache is implemented by keeping track of previously broadcasted \texttt{taskBytes} on the driver, and refer to their IDs instead of creating a new broadcast variable every time. Broadcast variables are automatically cached on the executor side, so this this methodology removes the extraneous communication with the driver.
 
-\subsubsection{Update Dependencies}
+\subsection{Update Dependencies}
 In \texttt{updateDependencies()}, the current implementation creates a new Hadoop configuration object regardless of whether new dependencies are introduced. However, this objection creation is very costly in CPU cycles. Moreover, since a streaming application rarely introduces new dependencies once it starts to run, this method is incurring unnecessary costs. To solve this problem, we changed the object to be lazily instantiated, so that no cycles are spent creating the configuration object unless new dependencies are introduced.
 
-\subsubsection{Evaluation}
-The improvements of the two optimizations described above are also shown in Figure \ref{fig:deserialization_times}. After the changes, deserialization time for a task decreased from 3.6ms to 0.2ms. The impact of the two changes on overall task runtime is reflected in Figure \ref{fig:runtime_optimizations}.
+\subsection{Evaluation}
+The improvements of the two optimizations described above are also shown in Figure \ref{fig:deserialization_times}. After the changes, deserialization time for a task decreased from 3.6ms to 0.2ms. The impact of the two changes on overall task runtime is reflected in Figure~\ref{fig:runtime_optimizations}.
 
 \begin{figure}[t!]
  \begin{center}
@@ -69,7 +69,7 @@ The improvements of the two optimizations described above are also shown in Figu
  \label{fig:runtime_optimizations}
 \end{figure}
 
-To show the effect of reducing task runtimes, we performed a micro-benchmark running a single stage with many tasks. The results are shown in figure \ref{fig:lazy_macro}
+To show the effect of reducing task runtimes, we performed a micro-benchmark running a single stage with many tasks. The results are shown in Figure \ref{fig:lazy_micro}
 
 \begin{figure}[t!]
  \begin{center}
@@ -80,4 +80,6 @@ To show the effect of reducing task runtimes, we performed a micro-benchmark run
 \end{figure}
 
 \subsection{Limitations}
-While caching task binaries sound simple in theory, they are more complicated to implement in practice. \team{Should we explain this in detail?}
+While caching task binaries sound simple in theory, they are more complicated to implement in practice. For example, in our implementation, the Driver caches the serialized binary of tasks. For serializations across batches to match, we made fields such as IDs that are unique across objects not be serialized. While this change does not affect correctness, it will complicate other components such as logging that uses those information.
+
+Furthermore, our caching technique only works for batches with single stages. When there are multiple stages, i.e. when shuffles or aggregations are involved, the dependency in previous data tends to change from batch to batch, making it difficult to hit a previously cached binary.
