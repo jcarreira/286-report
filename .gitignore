@@ -5,3 +5,5 @@
 *.cb2
 *.log
 *.out
+*eps-converted-to.pdf
+*.sty
