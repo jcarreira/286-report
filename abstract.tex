@@ -1,4 +1,17 @@
-\noindent The value of streaming systems such as Spark Streaming and Storm is derived from the timeliness of results. Less time to provide results means faster reaction. Nowadays, different streaming systems provide different end-to-end time guarantees, and these guarantees are to a large extent a result of each systems architecture. Spark Streaming is built on top of a general batch-processing framework to compute over mini-batches of streaming data. Storm allows the construction of topologies on which data flows to be processed. Spark Streaming is known to provide latencies on the order of seconds while Storm on the order of a few milliseconds. In this paper we investigate the approach taken by Spark Streaming and show that despite its more general architecture (\joao{general architecture may not be the right term}) it can provide latencies below 100ms. In this paper we make three contributions. First, we provide a comprehensive analysis of the performance of Spark Streaming and show where time is spent within the system. Second, we identify the performance and scalability bottlenecks of Spark Streaming and pinpoint the underlying architectural deficiencies of the system. Last, we propose three optimizations to reduce the system overhead and make it support higher levels of throughput.
+\noindent 
+The value of streaming systems such as Spark Streaming and Storm stems largely from the timeliness of the results these systems provide.
+As interactive applications become more complex and become part of increasingly complex workflows, the time to process the arrival of new data becomes more important.
+Given this, we look into a micro-batch streaming system (Spark Streaming) and investigate how micro-batch architectures suit interactive and latency-sensitive workloads. 
+We instrumented Spark Streaming to understand where time goes and where we should focus our development effort. 
+%Nowadays, different streaming systems provide different end-to-end time guarantees, and these guarantees are to a large extent a result of each systems architecture. 
+%Spark Streaming is built on top of a general batch-processing framework to compute over mini-batches of streaming data. 
+%Storm allows the construction of topologies on which data flows to be processed. 
+%Spark Streaming is known to provide latencies on the order of seconds while Storm on the order of a few milliseconds. 
+%In this paper we investigate the approach taken by Spark Streaming and show that despite its more general architecture (\joao{general architecture may not be the right term}) it can provide latencies below 100ms. 
+In this paper we make three contributions. 
+First, we provide a comprehensive analysis of the performance of Spark Streaming and show where time is spent within the system. 
+Second, we identify the performance and scalability bottlenecks of Spark Streaming and pinpoint the underlying architectural deficiencies of the system. 
+Last, we propose three optimizations to reduce the system overhead and make it support higher levels of throughput.
         
 %        To do so, we tackled two problems. The first has to do with overheads related to launching tasks and communicating between nodes. The second has to do with the poor scalability performance when the Spark is subject to a high number of tasks being scheduled. We show that with these two contributions Spark Streaming can support low-latency tasks and scale to demanding low-latency stream workloads.
 
