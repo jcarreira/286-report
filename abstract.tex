@@ -10,7 +10,7 @@ We instrumented Spark Streaming to understand where time goes and where developm
 In this paper we make three contributions. 
 First, we provide a comprehensive analysis of the performance of Spark Streaming and show where time is spent within the system. 
 Second, we identify the performance and scalability bottlenecks of Spark Streaming and pinpoint the underlying architectural deficiencies of the system. 
-Last, we propose three optimizations to reduce the system overhead and make it support higher levels of throughput.
+Last, we propose two optimizations to reduce the system overhead and achieve higher throughput.
         
 %        To do so, we tackled two problems. The first has to do with overheads related to launching tasks and communicating between nodes. The second has to do with the poor scalability performance when the Spark is subject to a high number of tasks being scheduled. We show that with these two contributions Spark Streaming can support low-latency tasks and scale to demanding low-latency stream workloads.
 
