@@ -6,8 +6,8 @@ Applications that do not provide good performance may delay the execution of oth
 Several data analytics 
 systems~\cite{Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,condie2010mapreduce,Brito:2011:SLD:2114498.2116192} 
 provide easy-to-use and practical frameworks for streaming processing.
-Systems like Storm or TelegraphCQ handle streams of data by creating pipelines for record-at-a-time processing. In this environment, data flows through the system, potentially through different machines, and is continuously processed and augmented.
-Other systems like Spark Streaming rely on micro-batches. In micro-batch systems records are coalesced into small groups before being processed together.
+Systems like Storm or TelegraphCQ handle streams of data by creating pipelines for record-at-a-time processing. In this environment, data flows through the system (potentially through different machines) and data is continuously processed and augmented.
+Systems like Spark Streaming rely on micro-batches. In micro-batch systems records are coalesced into small groups before being processed together.
 
 It is widely believed that to provide low-latency latency, applications should use the record-at-a-time approach, while for the highest throughput, the micro-batch model is more appropriate. 
 While record-at-a-time systems can start processing data as soon as it is received, these types of systems have serious disadvantages when compared with the micro-batch approach.
@@ -16,24 +16,24 @@ While record-at-a-time systems can start processing data as soon as it is receiv
 First, record-at-a-time systems are not suitable for stateful or blocking operators, as these operators require saving state between computation steps. This is not only more onerous for developers but also complicates the fault-tolerance model of these systems.
 %For example, record-at-a-time systems do not handle stateful or blocking operators very well natively. 
 Second, record-at-a-time systems require replication or upstream backup techniques to tolerate failures.
-Neither solutions are desirable, because the former requires the usage of fail-over hardware, and the latter usually leads to high recovery times.
-Finally, because developing an application for a micro-batch system is not much different than developing a batch application, developers can easily reuse their batch applications code if they use micro-batch systems. For record-at-a-time systems computation does not follow the model of map and reduce, which means the developer may not be able to reuse existing code.
-%Because Spark provides a rich set of libraries (e.g., GraphX, MLlib and SparkSQL) it would be appealing to users to be able to use these in streaming workloads that are latency-sensitive.
+While the former requires the usage of fail-over hardware, the latter usually leads to high recovery times.
+Finally, because developing an application for a micro-batch system is not much different than developing a batch application, developers can easily reuse their batch applications code if they use micro-batch systems. For record-at-a-time systems computation does not follow the model of map reduce, which means the developer may not be able to reuse existing code.
+Because Spark provides a rich set of libraries (e.g., GraphX, MLlib and SparkSQL) users would like to be able to use these in streaming and latency-sensitive workloads.
 %As another example, components can fail, and any well-designed system should be able to tolerate failures and recover from them. In these areas, the micro-batch approach has a clear advantage, as many traditional techniques used in databases can be applied to it.
 
 % Unless it is explicitly stated, throughout the paper we refer to tasks latency as the time it takes from the time the data from a stream is received to the time the result of processing that data is returned to the user.
 
 Because of the advantages in the micro-batch model, we want to explore the possibilities of using this model to provide better end-to-end latencies. In this paper we perform an in-depth analysis of Spark Streaming, a micro-batch streaming engine, and evaluate the system's ability to provide low-latency and high throughput stream processing.
-In particular, we intend to answer the question: ``Are the limitations of Spark Streaming's performance a fundamental result of its architecture, or the result of engineering decisions?"
-In answering the question, we found three sources of bottlenecks in the Spark Streaming architecture: receiving data, scheduling tasks, and running tasks. We implement enhancements for running tasks, and offer suggestion on how to tune the receiving and scheduling. We show that by addressing these problems, Spark Streaming can provide O(millisecond) latencies and O(100K records/s) throughput per node for realistic workloads.
+In particular, we intend to answer the question: ``Are the performance limitations of Spark Streaming a consequence of its architecture, or the result of engineering decisions?"
+In answering this question, we found two sources of bottlenecks in the Spark Streaming architecture: receiving data and running tasks. We implement enhancements for running tasks, and offer suggestion on how to tune the process of receiving data.
+We show that by addressing these problems, Spark Streaming can provide O(millisecond) latencies and O(100K records/sec) throughput per node for realistic workloads.
 
 Even though the focus of our analysis is in Spark Streaming, we believe that our analysis and conclusions can inform the design and development of other streaming systems using the micro-batch architecture.
 
 The paper is organized as follows: 
 in Section 2 we provide an overview of the architecture and workflow of Spark Streaming. 
-In Section 3 we present a performance study of Spark Streaming across two main dimensions: end-to-end latency and throughput.
-In Section 4 we present some optimizations aimed at solving some of the architectural deficiencies identified in the previous section.
-In Section 5 we evaluate the architecture of Spark Streaming with respect to real and synthetic workloads, and discuss how different factors affect the performance of the system. 
-We then discuss the next steps needed to bring low latency to the micro-batch approach in streaming.
-In Section 6 we talk about previous work that relate to streaming, including record-at-a-time and micro-batch approaches, and executing locally or in a distributed environment.
+In Section 3 we motivate this work with a performance study of Spark Streaming across two main dimensions: end-to-end latency and throughput.
+In Section 4 we present optimizations aimed at solving some of the architectural deficiencies identified in the previous section.
+In Section 5 we present some of the lessons gathered during this work and discuss some of the architectural changes we believe are required to make Spark Streaming provide lower latencies.
+In Section 6 we describe how some other contributions relate and complement our work.
 Finally, in section 7 we conclude.

@@ -7,9 +7,7 @@
 \end{figure}
 
 
-
 To better understand the performance and limitations of Spark Streaming we conducted a benchmark study of the system.
-
 To this end we have instrumented Spark Streaming.
 Our instrumentation code allows us to track a subset of the stream data as it flows through the system.
 We record at which moments of time some of the records pass through some of the components.
@@ -37,7 +35,7 @@ To run this benchmark, we have deployed a Receiver and a record generator in two
 The record generator generates as many records as necessary to achieve a user-specified throughput.
 Each record contains a timestamp that corresponds to the moment of creation of the record as well as a unique ID.
 The Receiver uses the Spark Streaming API to consume this data. 
-A task is generated periodically, according to a user-defined frequency, and scheduled to a node where the data is processed.
+A task is generated periodically, according to the  \texttt{batchInterval}, and scheduled to process data.
 
 \begin{figure}[t!]
   \begin{center}
@@ -84,8 +82,11 @@ We provide this result in figure~\ref{fig:SparkStreaming_time_breakdown}.
 This graph provides several insights. 
 First, at most 11\% of the execution time is useful time.
 Second, roughly 20\% of the time is spent waiting for data to be transmitted from the source of data to the Receiver.
-This time has to do with the architecture of the Receiver, as it was already explained.
+This time has to do with the architecture of the Receiver.
 Third, one third of the time is spent between generating a block of data and informing the driver about blocks received.
-This time stems from the fact that the Driver has to single-handedly, supported by one thread, to process metadata information of blocks sent by 3 receivers.
+This time stems from the fact that the Receiver reserves one single loop to continuously consume blocks and send the respective metadata to the Driver.
 This approach does not scale to workloads with a high number of blocks generated per unit of time.
-Lastly, as expected, the scheduling time is roughly 11ms. Given a batch window of 10ms, each record will have to wait roughly 10ms to be scheduled.
+Lastly, as expected, the time spent to scheduler a micro-batch record is 11ms. Given a batch window of 10ms, each record will have to wait roughly 10ms to be scheduled.
+
+Figure\ref{CDF_latencies} shows a CDF of the end-to-end latencies for different throughput levels. The graph shows that a not small tail of records is processed with high latency.
+We believe this motivates the need for an architecture that can scale and adapt to bursts of data in order to consistently provide acceptable latencies.

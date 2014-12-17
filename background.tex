@@ -24,7 +24,7 @@ The execution of a Spark Streaming job works as depicted in Figure~\ref{fig:Spar
 First, data is generated at a source (e.g., tweets from Twitter). As the data is generated, it is pushed to Spark Streaming, and is received by a Receiver. 
 The Receiver is responsible for receiving input data and stash it in memory. Periodically, every \texttt{blockInterval} milliseconds, the Receiver takes the data stashed in memory and generates a block with it.
 Once a block is generated, the Receiver informs a Spark Streaming's central component called Driver about this block. The Driver is responsible for holding metadata about the records received. 
-Periodically, every \texttt{batchInterval} milliseconds, the Driver takes the blocks that have been communicated by the receivers and that have not been processed yet and generates a batch job. 
+Periodically, every \texttt{batchInterval} milliseconds (batch window), the Driver takes the blocks that have been communicated by the receivers and that have not been processed yet and generates a batch job. 
 Once this batch job is generated it is appended to a queue of jobs to be scheduled. 
 The scheduler continuously polls this queue and schedules the jobs in the machines available in the cluster.
 Jobs are run in stateless isolated environments called Executors. Executors are usually deployed in the same nodes as Receivers.
@@ -32,7 +32,7 @@ Every batch job is divided into map and reduce stages, each of which contains ta
 
 At the heart of the micro-batches approach taken by Spark is a trade-off between the amount of records Spark can process per unit of time and the time the system takes to return to the user the result of processing a stream record.
 On one hand, waiting for more records to generate bigger batches allows Spark Streaming to amortize its overheads. On the other hand, the more time the system waits for data, the less responsive the system is.
-Moreover, Spark can provide window semantics over data. For instance, a user can easily use Spark Streaming to compute the average temperature during the last 30 minutes over a stream of temperature sensor data.
+Moreover, Spark can provide window semantics over data. For instance, a user can use Spark Streaming to compute the average temperature during the last 30 minutes over a stream of temperature sensor data.
 %    This means that users can ask the system to compute 
 
 %Internally, a variable called block interval controls the period of time before a receiver generates a new block. The total number of blocks generated in a batch interval corresponds to the number of tasks spawned for every stage of the resulting batch job.
