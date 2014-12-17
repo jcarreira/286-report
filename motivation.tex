@@ -8,14 +8,32 @@
 
 To better understand the performance and limitations of Spark Streaming we conducted a benchmark study of the system.
 
-To this end we used a synthetic workload to exercise Spark Streaming and measure how the system behaves under different scenarios.
-The application consists of a simple transformation of a stream of text records of sizes from 15 to 25 bytes.
-In this benchmark we do not focus on the time spent during computation.
-This is because first, the computation time is almost always orthogonal to the architecture used.
-Secondly, there is other work aimed at improving computation times in streaming or MapReduce systems.
+To this end we have instrumented Spark Streaming.
+Our instrumentation code allows us to track a subset of the stream data as it flows through the system.
+We record at which moments of time some of the records pass through some of the components.
+
+To exercise Spark Streaming we have used a synthetic workload.
+%To this end we used a synthetic workload to exercise Spark Streaming and measure how the system behaves under different scenarios.
+This workload consists of an application that listens for a stream of text records.
+Each record has size between 15-25 bytes and holds a unique ID and a timestamp of time when the data was generated.
+For each micro-batch, the application computes and records the end-to-end latency of the first 10 records in the micro-batch.
+
+The computation performed by this workload is very lightweight.
+We believe that this is in line with the type of computations used with Spark Streaming.
+First, typical streaming tasks consist of filtering and/or simple aggregations.
+These are operations that scale linearly with the amount of data in each batch.
+Secondly, there is extensive work on optimizing the performance of query processing, both in batch and streaming contexts.
+Finally, many steps of the computations performed in Spark and Spark Streaming are embarrassly parallel. 
+This means that developers can throw more hardware at the problem to get better performance. 
+However, to provide low-latency such approach is not enough. 
+The underlying stream processing system is likely to quickly become the bottleneck.
+
+%This is because first, the computation time is almost always orthogonal to the architecture used.
+%Secondly, there is other work aimed at improving computation times in streaming or MapReduce systems.
 %    There is parallel work on improving the performance of streaming computations that can be used to improve the execution times of tasks.
 
-To run this benchmark, we have deployed a receiver and a record generator in two different machines in the same cluster. 
+To run this benchmark, we have deployed a receiver and a record generator in two different machines in the same cluster.
+
 The record generator generates as many records as necessary to achieve a user-specified throughput.
 Each record contains a timestamp that corresponds to the moment of creation of the record as well as a unique ID.
 The receiver uses the Spark Streaming API to consume this data. 
