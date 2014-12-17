@@ -11,7 +11,9 @@ As explained by the previous subsection, the size of input records affect the sy
 \paragraph{Size of Batch Interval}
 While the micro-batch approach increases throughput at the expense of latency by coalescing input data before processing, the size of the batch interval does not form a linear relationship with the throughput. In fact, the best latency is obtained when the batch interval is set to slightly larger than the time it takes to computationally process a batch. This difference accounts for overheads in task spawning, scheduling, and noise.
 
-\paragraph{Input Serialization}
+adaptive batching
+
+\subsection{Input Serialization}
 In Section 3, we evaluated the system using plain text input records. However, in real world applications, applications may choose to serialize their input data for better network latency. Serializing input data means they have to be deserialized during computation, so this decision concerns the trade-off between CPU and network I/O.
 
 In the case of Spark Streaming, if the input data is serialized, it has the option to be directly stored inside the system as a block, bypassing the block interval and logic to convert stored records into blocks. Not surprisingly, this approach increases the rate at which Spark Streaming can intake data significantly. For the same benchmark with 20-byte records, Spark Streaming can sustain a throughput of 80MB/s, or 16M records per second using a single receiver.
@@ -23,3 +25,5 @@ The disadvantage of sending data direct as blocks is that they need to be coales
 %In order to evaluate our contributions we have setup an instance of Spark Streaming to process a stream of tweets from Twitter. In our setup Spark Streaming runs in a dedicated cluster of 16 nodes. Each node has 16 cores  Intel IvyBridge 3.0GHz with 64GB of RAM. The nodes are interconnected with InfiniBand connections. We ran this experiment with 1 driver, 15 workers and X receivers.
 
 %\paragraph {\bf Twitter Workload} To approximate as much as possible a real workload we have built a custom twitter receiver. This receiver listens for tweets using the standard Twitter API. Because this API samples the tweets (roughly 1\% of the tweets are published), every time we receive tweets from this 
+
+What didn't look into: scheduling bottleneck, network bottleneck, complex workload, fault tolerance
