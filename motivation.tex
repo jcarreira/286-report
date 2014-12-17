@@ -48,28 +48,6 @@ In the graph we see that for a throughput value of 10Mb/sec Spark.
   \label{fig:Batchsize_vs_latency}
 \end{figure}
 
-%%\subsection{Task Overhead}
-%%
-%%\team{I think we should frame this "task overheads" into a bigger picture. Starting by explaining how the process of running a Spark streaming application works, and then pointing out the major sources of overhead. Plot graph showing the time breakdown between serialization, computation, scheduling, etc...}
-%%
-%%Since tasks form the basic units of computation for Spark Streaming, it is important to optimize its execution. 
-%%\jianneng{I don't agree with the previous statement. Tasks are also the basic units for computation in Hadoop and still that is not such a big deal because batch tasks take a lot of time. Next sentence is good and should be more developed.} 
-%%This problem is especially relevant in our case, since the tasks we are executing are short. As the system is still relatively new, much of the current codebase emphasizes more on the ease of understanding over raw performance. 
-%%\jianneng{Previous sentence sounds very software engineery. In systems papers we usually don't see this types of comments.}
-%%By analyzing the decisions made by the developers and measuring execution times in different sections of the code path, we found a number of inefficiencies that can be improved upon.
-%%
-%%For every Spark Streaming application, there is a driver and multiple executors. The receivers of data run on executors, and these receivers send to the driver metadata about the blocks generated. After every batch interval, the driver collects all of the blocks received during the period and make them into a RDD (Resilient Distributed Dataset, Spark's abstraction for distributed objects), and runs application logic on it using Spark. Spark runs each function on the RDD by generating tasks, serializing them, and sending them to appropriate executors. The executors deserialize each task, runs the function, and returns to the driver the results.
-%%
-%%During our experiments, we found that when a task is not computation-intensive, the majority of the time in running the task is spent in deserialization. When running tasks with no-op operations, we found that from the driver's perspective, the time it takes for a task to be scheduled to the time it takes for the result to be received is 5ms. However, approximately 3.6ms out of this time is spent deserializing the task. These metrics mean that if we can reduce the task deserialization time, there will be a considerable improvement to the latency of small tasks.
-%%\jianneng{We should show a more principled approach of getting to these results/conclusions. Here we should setup an experiment, explain how it was run, run it and show graphs with results. From this experiment and graphs come the conclusions. I tried to do this below in the "Scheduling scalability" benchmark}
-%%
-%%\begin{figure}[t!]
-%%  \begin{center}
-%%    \includegraphics[scale=0.30]{images_graphs/deserialization.eps}
-%%  \end{center}
-%%  \caption{How a task is deserialized on the executor. \jianneng{expand this caption? The diagram is interesting and this description can be more developed. E.g., its not clear what the dependencies are}}
-%%  \label{fig:deserialization}
-%%\end{figure}
 %%
 %%\subsection{Scheduling Scalability}
 %%
