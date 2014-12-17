@@ -1,11 +1,16 @@
 % TODO:
 % Why are we focusing on Spark Streaming?
 %
-To understand our work, we will provide a short description of Spark Streaming's origin and architecture.
+To understand our work, we provide a short description of Spark Streaming's architecture.
 
-Spark~\cite{Spark} is a general-purpose engine for large-scale cluster computing. It operates on Resilient Distributed Datasets (RDDs), an abstraction that represents read-only collections of objects partitioned across a set of machines. RDDs can be created raw data or other RDDs, and keep track of their lineage information, so that partitions can be recomputed if they are lost due to failures. Another feature of RDDs is that they can be persisted in memory, allowing efficient iterative computations.
+Spark~\cite{Spark} is a general-purpose engine for large-scale cluster computing. It operates on Resilient Distributed Datasets (RDDs), an abstraction that represents read-only collections of objects partitioned across a set of machines. RDDs can be created from raw data or other RDDs. 
+RDDs keep track of the bulk operations (e.g., map and reduce) performed on data (lineage) so that partitions can be recomputed if they are lost due to failures. 
+Another feature of RDDs is that they can be persisted in memory, allowing efficient iterative computations.
 
-Spark Streaming, the focus of our work, is a stream processing engine built on top of Spark.It implements an abstraction called discretized streams (D-Streams), which take advantage of RDDs to provide fast recovery after failures. The abstraction allows a micro-batch approach to streaming data, yielding high throughput and scalability.
+Spark Streaming, the focus of our work, is a stream processing engine built on top of Spark.
+It implements an abstraction called discretized streams (D-Streams), which takes advantage of RDDs to provide computations over windows of streaming records.
+%which take advantage of RDDs to provide fast recovery after failures. 
+The abstraction allows a micro-batch approach to streaming data, yielding high throughput, scalability and faul-tolerance.
 
 \begin{figure}[t!]
   \begin{center}
@@ -22,18 +27,17 @@ Once a block is generated, the Receiver informs a Spark Streaming's central comp
 Periodically, every \texttt{batchInterval} milliseconds, the Driver takes the blocks that have been communicated by the receivers and that have not been processed yet and generates a batch job. 
 Once this batch job is generated it is appended to a queue of jobs to be scheduled. 
 The scheduler continuously polls this queue and schedules the jobs in the machines available in the cluster.
-Jobs are run in stateless isolated environments called Executors. Executors are usually deployed in the same nodes as Receivers.  \joao{is it always like this?}.
-
-%For every Spark Streaming application, there is a driver and multiple executors. The receivers of data run on executors, and these receivers send to the driver metadata about the blocks generated. After every batch interval, the driver collects all of the blocks received during the period and make them into a RDD (Resilient Distributed Dataset, Spark's abstraction for distributed objects), and runs application logic on it using Spark. Spark runs each function on the RDD by generating tasks, serializing them, and sending them to appropriate executors. The executors deserialize each task, runs the function, and returns to the driver the results.ver metadata about the blocks generated. After every batch interval, the driver co
-
-%Data is captured by specific applications, called receivers. Receivers are responsible for connecting to the source of data, setting up a Spark Streaming execution and specifying how often to process received records.
-
-%Spark Streaming creates a batch job after a specific amount of time (every \emph{batchInterval} milliseconds), and processes the data received by all receivers during that period.
-
+Jobs are run in stateless isolated environments called Executors. Executors are usually deployed in the same nodes as Receivers.
 Every batch job is divided into map and reduce stages, each of which contains tasks that need to be scheduled.
+
 At the heart of the micro-batches approach taken by Spark is a trade-off between the amount of records Spark can process per unit of time and the time the system takes to return to the user the result of processing a stream record.
 On one hand, waiting for more records to generate bigger batches allows Spark Streaming to amortize its overheads. On the other hand, the more time the system waits for data, the less responsive the system is.
+Moreover, Spark can provide window semantics over data. For instance, a user can easily use Spark Streaming to compute the average temperature during the last 30 minutes over a stream of temperature sensor data.
+%    This means that users can ask the system to compute 
 
 %Internally, a variable called block interval controls the period of time before a receiver generates a new block. The total number of blocks generated in a batch interval corresponds to the number of tasks spawned for every stage of the resulting batch job.
 
-Internally, Spark Streaming makes extensive use of Actors -- a design pattern that decouples the invocation of methods from their execution. This means that 
+Internally, Spark Streaming makes extensive use of Actors -- a design pattern that decouples the invocation of methods from their execution. 
+In this approach, the invocation of methods between certain components is performed by inserting a message in a queue of the message receiver.
+The component that receives the message continuously polls the queue and services messages in parallel.
+This approach has been shown to provide high levels of concurrency and adaptability to changing loads~\cite{SEDA}.
