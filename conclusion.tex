@@ -1,4 +1,4 @@
-This paper tries to present a solution for stream processing of short tasks in Spark Streaming, a space that we have found Spark Streaming lacking in practice.
-We present three techniques to achieve this goal: 1) reduction of task overheads, 2) decentralized and elastic scheduling, and 3) leveraging modern network mediums of communication for faster transfer of data between the driver, schedulers and workers.
+This paper presents an analysis of low-latency stream processing in Spark Streaming, a space that we have found this system lacking in practice.
+We make three contributions to achieve this goal: 1) analysis of Spark Streaming performance, 2) identification of main bottlenecks in the system, and 3) design and evaluation optimizations to reduce overheads.
 
-Much of this work is still in progress. We plan to continue working on this problem and evaluating the solutions we have proposed. Figure~\ref{fig:money_graph} shows a graph we wish to obtain with our improvements. We expect the average end-to-end latency of tasks to be lower, the scheduling ``capacity" to be higher, and perhaps become a function of the number of decentralized schedulers that can be provisioned.
+Much of this work is still in progress. We plan to continue working on this problem and evaluating the solutions we have proposed. 
