@@ -1,6 +1,9 @@
-\noindent Some data analytics applications, like intrusion detection, web search and sensor actuation, require the computation of results in a timely fashion in order to provide interactivity and timely reaction to events.
-Several data analytics systems~\cite{Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,Condie:2010:MO:1855711.185573,Brito:2011:SLD:2114498.2116192} provide easy-to-use and deploy frameworks for these types of applications. 
-Systems like Storm or XX \team{fill} handle streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. 
+\noindent
+Some data analytics applications, like intrusion detection, web search and sensor actuation, require the computation of results in a timely fashion in order to provide interactivity and timely reaction to events.
+Several data analytics 
+systems~\cite{Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,Condie:2010:MO:1855711.185573,Brito:2011:SLD:2114498.2116192} 
+provide easy-to-use and deploy frameworks for these types of applications. 
+Systems like Storm or TelegraphCQ handle streams of data by creating pipelines for record-at-a-time processing with at-least-once semantics. 
 Others, like Spark Streaming offer processing capabilities with micro-batches, where records are coalesced into small groups before being consumed together.
 
 It is widely believed that for best latency, applications should use the record-at-a-time approach, while for the highest throughput, the micro-batch model is more appropriate. However, distributed streaming applications are not so simple. For example, record-at-a-time systems do not handle stateful or blocking operators very well natively. As another example, components can fail, and any well-designed system should be able to tolerate failures and recover from them. In these areas, the micro-batch approach has a clear advantage, as many traditional techniques used in databases can be applied to it.

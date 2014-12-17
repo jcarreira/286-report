@@ -1,7 +1,8 @@
-labels              values
-"Average\nTotal"    100
-Socket              -29
-BlockGenerator      -1
-"Receiver\nTracker" -1
-ScheduledInput      -2
-'Last step'         -67
+labels                           values
+"Average\nTotal"                 100
+'Send data'                      -19
+'Generate Block'                 -4
+"Inform Driver"                  -34
+'Insert in scheduler queue'      -14
+'Schedule'                       -18
+'Compute'                        -11
