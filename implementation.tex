@@ -1,4 +1,7 @@
-As we see from Section 3, majority of the time processing a record is spent in receiving, scheduling, and computation. In our experiments, we found that the rate at which the receiver can receive input does not increase significantly even if it drops every record. Therefore, we did not treat this bottleneck as a problem fundamental within the architecture, and focused on scheduling and computation in our optimizations.
+The majority of the time processing a record is spent in the Receiver and during computation. 
+In our experiments, we found that the rate at which the receiver can receive input is limited by the efficiency of the communication layer.
+%does not increase significantly even if it drops every record.
+Therefore, we did not treat this bottleneck as a problem fundamental within the architecture, and focused on scheduling and computation in our optimizations.
 
 %\subsection{Scheduling Scalability}
 
