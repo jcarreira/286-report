@@ -1,9 +1,10 @@
-personal_ws-1.1 en 66 
+personal_ws-1.1 en 69 
 stateful
 workflows
 RDDs
 dataflows
 throughputs
+pipelining
 Carreira
 benchmarking
 analytics
@@ -27,6 +28,8 @@ taskBytes
 BlinkDB
 Neng
 TelegraphCQ
+Xeon
+tuples
 Incoop
 Streaming's
 instantiation
