@@ -71,6 +71,12 @@ The improvements of the two optimizations described above are also shown in Figu
 
 To show the effect of reducing task runtimes, we performed a micro-benchmark running a single stage with many tasks. The results are shown in Figure \ref{fig:lazy_micro}
 
+
+\subsection{Limitations}
+While caching task binaries sound simple in theory, they are more complicated to implement in practice. For example, in our implementation, the Driver caches the serialized binary of tasks. For serializations across batches to match, we made fields such as IDs that are unique across objects not be serialized. While this change does not affect correctness, it will complicate other components such as logging that uses those information.
+
+Furthermore, our caching technique only works for batches with single stages. When there are multiple stages, i.e. when shuffles or aggregations are involved, the dependency in previous data tends to change from batch to batch, making it difficult to hit a previously cached binary.
+
 \begin{figure}[t!]
  \begin{center}
    \includegraphics[scale=0.50]{images_graphs/optimizations/graph1/lazy_micro.pdf}
@@ -78,8 +84,3 @@ To show the effect of reducing task runtimes, we performed a micro-benchmark run
  \caption{Amount of time spent running a single Spark stage consisting of many tasks without and with lazy instantiation of configuration object.}
  \label{fig:lazy_micro}
 \end{figure}
-
-\subsection{Limitations}
-While caching task binaries sound simple in theory, they are more complicated to implement in practice. For example, in our implementation, the Driver caches the serialized binary of tasks. For serializations across batches to match, we made fields such as IDs that are unique across objects not be serialized. While this change does not affect correctness, it will complicate other components such as logging that uses those information.
-
-Furthermore, our caching technique only works for batches with single stages. When there are multiple stages, i.e. when shuffles or aggregations are involved, the dependency in previous data tends to change from batch to batch, making it difficult to hit a previously cached binary.

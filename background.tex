@@ -26,6 +26,13 @@ Every batch job is divided into one or more stages. Each stage can be a map stag
 
 Each stage operates on a RDD. The RDDs are partitioned by the blocks generated during the batch interval, and can be processed in parallel. The computation on a partition is called a task. Tasks are sent from the Scheduler to run in stateless environments called Executors. Executors are usually deployed in the same nodes as Receivers; in fact, Receivers are implemented as long-running tasks.
 
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.50]{images_graphs/batchsize_vs_latency/batchsize_vs_latency_illustrator.pdf}
+  \end{center}
+  \caption{Average end-to-end latency for different batch window sizes and different throughputs. For batch windows smaller than 10ms the average end-to-end latency tens to infinity.}
+  \label{fig:Batchsize_vs_latency}
+\end{figure}
 
 At the heart of the micro-batch approach taken by Spark is the trade-off between the amount of records Spark can process per unit of time and the time the system takes to return results to the user.
 On one hand, waiting for more records to generate bigger batches allows Spark Streaming to amortize its overheads. On the other hand, the more time the system waits for data, the less responsive the system becomes.
@@ -37,3 +44,4 @@ On one hand, waiting for more records to generate bigger batches allows Spark St
 %This approach has been shown to provide high levels of concurrency and adaptability to changing loads~\cite{SEDA}.
 
 Internally, Spark Streaming makes extensive use of the producer-consumer design pattern, where separate threads offload work to each other through queues. For example, as blocks are generated at the receiver, they are pushed to a queue by a producer thread. The corresponding consumer thread constantly polls the queue, and stores the dequeued block as well as sends metadata about the block to the Driver. As well, communications between different components of the system is done through the Actor model, where components (``actors") talk to each other by sending messages to each other's message queues.
+

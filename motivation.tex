@@ -1,11 +1,3 @@
-\begin{figure}[t!]
-  \begin{center}
-    \includegraphics[scale=0.50]{images_graphs/batchsize_vs_latency/batchsize_vs_latency_illustrator.pdf}
-  \end{center}
-  \caption{Average end-to-end latency for different batch window sizes and different throughputs. For batch windows smaller than 10ms the average end-to-end latency tens to infinity.}
-  \label{fig:Batchsize_vs_latency}
-\end{figure}
-
 
 To better understand the performance and limitations of Spark Streaming we conducted a benchmark study of the system.
 To this end we have instrumented Spark Streaming.
@@ -17,6 +9,14 @@ To exercise Spark Streaming we have used a synthetic workload.
 This workload consists of an application that listens for a stream of text records.
 Each record has size between 15-25 bytes and holds a unique ID and a timestamp of time when the data was generated.
 For each micro-batch, the application computes and records the end-to-end latency of the first 10 records in the micro-batch.
+
+\begin{figure}[t!]
+  \begin{center}
+    \includegraphics[scale=0.40]{images_graphs/waterfall/Rplots_illustrator.pdf}
+  \end{center}
+  \caption{Execution time breakdown for a batch window of 10ms at 90MB/s.}
+  \label{fig:SparkStreaming_time_breakdown}
+\end{figure}
 
 The computation performed by this workload is very lightweight.
 We believe that this is in line with the type of computations used with Spark Streaming.
@@ -37,17 +37,10 @@ Each record contains a timestamp that corresponds to the moment of creation of t
 The Receiver uses the Spark Streaming API to consume this data. 
 A task is generated periodically, according to the  \texttt{batchInterval}, and scheduled to process data.
 
-\begin{figure}[t!]
-  \begin{center}
-    \includegraphics[scale=0.40]{images_graphs/waterfall/Rplots_illustrator.pdf}
-  \end{center}
-  \caption{Execution time breakdown for a batch window of 10ms at 90MB/s.}
-  \label{fig:SparkStreaming_time_breakdown}
-\end{figure}
 
 \begin{figure}[t!]
   \begin{center}
-    \includegraphics[scale=0.48]{images_graphs/cdf_latencies/cdf_e2e_times.pdf}
+    \includegraphics[scale=0.48]{images_graphs/cdf_latencies/cdf_e2e_times_illus.pdf}
   \end{center}
   \caption{CDF of latencies for a batch window of 10ms at 90MB/s and 30MB/s.}
   \label{fig:CDF_latencies}
