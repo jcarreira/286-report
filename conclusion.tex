@@ -1,4 +1,4 @@
-This paper presents an analysis of low-latency stream processing in Spark Streaming, a space that we have found this system lacking in practice.
-We make three contributions to achieve this goal: 1) analysis of Spark Streaming performance, 2) identification of main bottlenecks in the system, and 3) design and evaluate optimizations to reduce overheads.
+This paper presents an analysis of low-latency stream processing in Spark Streaming, a space that we have found the system as well as the underlying micro-batch approach lacking in practice.
+We analyzed the average time breakdown of data processing, identified the bottlenecks, and implemented a number of optimizations for the system as well as proposed several tuning suggestions for the architecture.
 
-Much of this work is still in progress. We plan to continue working on this problem and evaluating the solutions we have proposed. 
+Much of this work is still in progress. We have encountered numerous challenges along the way, including time constraint, unfamiliar code base, and inability to reproduce results across even minor verions of Spark Streaming. Nevertheless, we are encouraged by our discoveries, and we plan to continue working on this problem and evaluating the solutions that we have proposed. 
