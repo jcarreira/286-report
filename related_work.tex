@@ -1,10 +1,10 @@
 \paragraph {\bf High Throughput} Trill~\cite{Trill} is a recent query processor for analytics that uses a tempo-relational model, enabling it to support a wide range of latencies for both online and offline data. It achieves high performance by using a streaming batched-columnar data representation, to provide data locality and reduce data access time.
-The original Spark Streaming~\cite{SparkStreaming} paper placed emphasis on fault-tolerance, straggler mitigation, fast recovery, and scalability, in the context of high throughput. Our work builds on top of this belief in high throughput, without removing any of the features in the system.
+The original Spark Streaming~\cite{SparkStreaming} paper also highlights its high throughput, along with other desirable features including fault-tolerance, straggler mitigation, fast recovery, and scalability. Our work builds on top of this belief in high throughput, without removing any of the features in the system.
 
 \paragraph {\bf Adaptive Batch Sizes} TelegraphCQ~\cite{TelegraphCQ} is a system designed for a volatile environment, and can make per-tuple and per-operator routing decisions to balance load. \cite{das2014adaptive} studies the effect of batch sizes and other parameters on the throughput and end-to-end latency of the system, and proposes an algorithm based on Fixed-Point Iteration to automatically adapt batch sizes as the circumstance varies. Although there is currently no such mechanism implemented in Spark Streaming, adaptive batch sizes can be very useful in determining the right value for the best trade-offs.
 
 \paragraph {\bf Faster computation} Some past work has focused on reducing time to compute results. Systems like BlinkDB~\cite{BlinkDB} perform computations on samples of the data and return prematurely with error bars, while ideas like online aggregation~\cite{OnlineAggregation} show current results as the query goes to completion.
-While we did not sample data in our research, we see these techniques as complementary to our work, as they can be used to reduce the overall time of streaming computations.
+We see these techniques as complementary to our work, as they can be used to reduce the overall time of streaming computations.
 Others systems such as Incoop~\cite{Incoop} and Slider~\cite{Slider} perform computation incrementally in order to avoid repeating previous computations. 
 %Storm~\cite{Storm} also a real-time, fault-tolerant distributed stream processing system that allows record-at-a-time approach for low latency.
 
