@@ -1,7 +1,7 @@
 The majority of the time processing a record is spent in the Receiver and during computation. 
 In our experiments, we found that the rate at which the receiver can receive input is limited by the efficiency of the communication layer.
 %does not increase significantly even if it drops every record.
-Therefore, we did not treat this bottleneck as a problem fundamental within the architecture, and focused on scheduling and computation in our optimizations.
+Therefore, we did not treat this bottleneck as a fundamental architecture problem, and focused on scheduling and computation in our optimizations.
 
 %\subsection{Scheduling Scalability}
 
@@ -26,7 +26,7 @@ Therefore, we did not treat this bottleneck as a problem fundamental within the 
 %
 %\subsection{Task overheads}
 
-Since our synthetic benchmark performed trivial computation, most of the time spent in the ``computation" part of the graph should be due to the overheads in launching and running tasks. 
+Since our synthetic benchmark performed trivial computation, most of the time spent in the ``computation" part of the graph is due to the overheads in launching and running tasks. 
 
 To breakdown the process of running desks, we modified the receiver so that it generated a block regardless of the number of records received. We then ran the system on empty input, using an application that required a single stage. Since there was no input, the computation itself was effectively no-op. After profiling this workflow, we found that from the driver's perspective, the time it took for a task to be scheduled to the time it took for the result to be received was around 5.0ms. However, approximately 3.6ms out of this time was spent deserializing the task. These numbers suggest that if we can reduce the task deserialization time, there will be a considerable improvement to the latency of small tasks.
 
@@ -48,7 +48,7 @@ Having discovered that a significant portion of the time running small tasks is 
  \label{fig:deserialization_times}
 \end{figure}
 
-Figure \ref{fig:deserialization_times} shows a time breakdown of deserialization. As can be seen in the graph, majority of the time in this case are in updating dependencies and deserializing \texttt{taskBytes}. We next examine each of these two components in more detail.
+Figure \ref{fig:deserialization_times} shows a time breakdown of deserialization. As can be seen in the graph, the majority of the time in this case is in updating dependencies and deserializing \texttt{taskBytes}. We next examine each of these two components in more detail.
 
 \subsubsection{Deserialize Binary}
 In order to reduce the amount of duplicate data transferred, Spark 1.1.0 wraps the function and the RDD into a broadcast variable. This way, each executor will only fetch the function and the RDD of a batch once. The first task that uses the information will pull it from the driver, and cache the result within the executor for later tasks. In the Spark Streaming context however, this means for every stage, some task on every executor requires a round trip to the driver to fetch the broadcast variable, increasing the latency. As the batch interval shrinks, new RDDs are created more often, but the functions to operate on them do not change. The executor should be able to cache them for a longer period of time than only for the current stage.

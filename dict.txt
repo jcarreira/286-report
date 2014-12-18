@@ -1,4 +1,4 @@
-personal_ws-1.1 en 61 
+personal_ws-1.1 en 66 
 stateful
 workflows
 RDDs
@@ -16,18 +16,21 @@ RDMA
 GraphX
 benchmarked
 IvyBridge
+unboundedly
 deserialize
 InfiniBand
 Joao
 optimizations
 SEDA
+dequeued
 taskBytes
 BlinkDB
 Neng
 TelegraphCQ
-Streaming's
 Incoop
+Streaming's
 instantiation
+other's
 workflow
 timestamp
 RDD
@@ -36,6 +39,7 @@ taskFiles
 serializedTask
 MapReduce
 abbrv
+Jianneng
 codebase
 SparkSQL
 tuple
@@ -48,6 +52,7 @@ Dataset
 CDF
 deserialized
 discretized
+punctuations
 Datasets
 MLlib
 batchInterval

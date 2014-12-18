@@ -16,7 +16,7 @@ In Section 3, we evaluated the system using plain text input records. However, i
 
 In the case of Spark Streaming, if the input data is serialized, it has the option to be directly stored inside the system as a block, bypassing the block interval and logic to convert stored records into blocks. Not surprisingly, this approach increases the rate at which Spark Streaming can intake data significantly. For the same benchmark with 20-byte records, Spark Streaming can sustain a throughput of 80MB/s, or 16M records per second using a single receiver.
 
-The disadvantage of sending data direct as blocks is that they need to be coalesced at the application, i.e. the application needs to group input records together and send them as a block to Spark Streaming. This number should be relatively large: when Spark Stream receives blocks only containing single records, its throughput dropped to around 375KB/s, or 75K records/s.
+The disadvantage of sending data directly as blocks is that they need to be coalesced at the application, i.e. the application needs to group input records together and send them as a block to Spark Streaming. This number should be relatively large: when Spark Stream receives blocks only containing single records, its throughput dropped to around 375KB/s, or 75K records/s.
 
 %In this section we show that Spark Streaming is able to provide low end-to-end batch response times for a realistic and demanding workload. We also show that our contributions decrease the average batch latency by Y times and increases the scalability of the system from X tasks/s to Y tasks/s.
 
