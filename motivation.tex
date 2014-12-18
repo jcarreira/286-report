@@ -1,4 +1,4 @@
-To better understand the performance and limitations of the Spark Streaming architecture, we conducted a benchmark study of the system. We added instrumentation code that allowed us to track the time stamps of a subset of the input data as it flows through the system.
+To better understand the performance and limitations of the Spark Streaming architecture, we conducted a benchmark study of the system. We added instrumentation code that allowed us to track the timestamps of a subset of the input data as it flows through the system.
 
 A synthetic workload was used for our performance testing on Spark Streaming.
 This workload consists of an application that listens for a stream of text records.
@@ -59,7 +59,7 @@ This graph provides several insights.
 First, at most 11\% of the execution time is useful time.
 Second, roughly 20\% of the time is spent waiting for data to be transmitted from the source of the data to the Receiver.
 This time has to do with the single-threaded loop design of reading tuples from the network.
-Third, more than one third of the time is spent between generating a block of data and informing the driver about blocks received.
+Third, more than one third of the time is spent between generating a block of data and informing the Driver about blocks received.
 This time stems from the fact that the Receiver reserves one single thread to continuously store blocks and send the respective metadata to the Driver.
 The approach does not seem to scale to workloads with a high number of blocks generated per unit of time.
 Lastly, as expected, the time spent to schedule a micro-batch record is 11ms. Given a batch window of 10ms, each record will have to wait roughly 10ms to be scheduled.
@@ -68,4 +68,4 @@ Figure~\ref{fig:CDF_latencies} shows a CDF of the end-to-end latencies for diffe
 
 One caveat is that the record we choose to track is always the first record in the first block of every batch. This means the record is one of the first records arrived for the batch, and among the ones that waited the longest. Therefore, the median end-to-end latencies for the shown data points should be the displayed latency minus half of block interval as well as batch interval.
 
-Overall, e believe these results motivate the need for an architecture that can scale and adapt to bursts of data in order to consistently provide acceptable latencies.
+Overall, we believe these results motivate the need for an architecture that can scale and adapt to bursts of data in order to consistently provide acceptable latencies.

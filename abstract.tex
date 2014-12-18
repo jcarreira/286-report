@@ -1,8 +1,8 @@
 The value of stream processing systems stems largely from the timeliness of the results these systems provide.
-Early stream processors followed the record-at-a-time approach, servicing each data point as soon as it arrives at the system. While these systems provide good latency, their behaviors become less desirable when applications require high throughput, fault tolerance, or the usage of stateful or blocking operators. More recently, systems are developed to follow the micro-batch approach, where many records are processed together as small batches, providing the missing features seemingly at the cost of latency.
+Early stream processors followed the record-at-a-time approach, servicing each data point as soon as it arrives at the system. While these systems provide good latency, their behaviors become less desirable when applications require high throughput, fault tolerance, or usage of stateful or blocking operators. More recently, systems are developed to follow the micro-batch approach, where many records are processed together as small batches, providing the missing features seemingly at the cost of latency.
 
-Given the situation, we look into a micro-batch streaming system called Spark Streaming, and investigate how well the micro-batch architecture can handle interactive and latency-sensitive workloads. 
-We instrumented Spark Streaming to understand where time goes and where development effort should be focused.
+Given the situation, we look into a micro-batch streaming system called Spark Streaming, and investigate how well the micro-batch architecture can handle latency-sensitive workloads. 
+We instrumented Spark Streaming to understand where time goes and where development effort should be focused on.
 %Nowadays, different streaming systems provide different end-to-end time guarantees, and these guarantees are to a large extent a result of each systems architecture. 
 %Spark Streaming is built on top of a general batch-processing framework to compute over mini-batches of streaming data. 
 %Storm allows the construction of topologies on which data flows to be processed. 

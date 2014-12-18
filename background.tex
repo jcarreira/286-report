@@ -8,7 +8,7 @@ In this section, we provide a short description of Spark Streaming's architectur
   \label{fig:SparkStreaming_architecture}
 \end{figure}
 
-Spark~\cite{Spark} is a general-purpose engine for large-scale cluster computing. It operates on Resilient Distributed Datasets (RDDs), an abstraction that represents read-only collections of objects partitioned across a set of machines. RDDs can be created from raw data or other RDDs, and keep track of the coarse-grained operations (e.g., \texttt{map}, \texttt{reduce}) performed on its underlying data as lineage information, so that partitions can be recomputed if they are lost due to failures. 
+Spark~\cite{Spark} is a general-purpose engine for large-scale cluster computing. It operates on Resilient Distributed Datasets (RDDs), an abstraction that represents read-only collections of objects partitioned across a set of machines. RDDs can be created from raw data or other RDDs, and keep track of the coarse-grained operations (e.g., map, reduce) performed on its underlying data as lineage information, so that partitions can be recomputed if they are lost due to failures. 
 Another feature of RDDs is that they can be persisted in memory, allowing efficient iterative computations.
 
 Spark Streaming, the focus of our work, is a stream processor built on top of Spark.
@@ -35,5 +35,5 @@ On one hand, waiting for more records to generate bigger batches allows Spark St
 %The component that receives the message continuously polls the queue and services messages in parallel.
 %This approach has been shown to provide high levels of concurrency and adaptability to changing loads~\cite{SEDA}.
 
-Internally, Spark Streaming makes extensive use of the producer-consumer design pattern, where separate threads offload work to each other through queues. For example, as blocks are generated at the receiver, they are pushed to a queue by a producer thread. The corresponding consumer thread constantly polls the queue, and stores the dequeued block as well as sends metadata about the block to the Driver. As well, communications between different components of the system is done through the Actor model, where components (``actors") talk to each other by sending messages to each other's message queues.
+Internally, Spark Streaming makes extensive use of the producer-consumer design pattern, where separate threads offload work to each other through queues. For example, as blocks are generated at the Receiver, they are pushed to a queue by a producer thread. The corresponding consumer thread constantly polls the queue, and stores the dequeued block as well as sends metadata about the block to the Driver. As well, communications between different components of the system is done through the Actor model, where components (``actors") talk to each other by sending messages to each other's message queues.
 

@@ -4,10 +4,10 @@ For instance, many systems today are designed to meet specific performance metri
 Applications that do not yield good performance may delay the execution of other systems and lead to loss of revenue and/or bad user experience.
 
 Many data analytics 
-systems~\cite{Millwheel,Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,Naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,condie2010mapreduce,Brito:2011:SLD:2114498.2116192, ELF} 
+systems~\cite{Millwheel,Babu:2001:CQO:603867.603884,TelegraphCQ,Storm,SparkStreaming,Trill,murray2013naiad,Niagara,StreamInsight,Carney:2002:MSN:1287369.1287389,Sullivan:1998:TSM:1268256.1268258,condie2010mapreduce,Brito:2011:SLD:2114498.2116192, ELF} 
 have been developed to provide easy-to-use and practical frameworks for stream processing, and they tend to follow one of the two popular approaches to act on inputs.
-Systems like Storm or TelegraphCQ handle streams of data by creating pipelines for record-at-a-time processing. In this environment, data flows through the system (potentially through different machines) and data is continuously processed and augmented.
-Other systems like Spark Streaming rely on micro-batches. In these systems, records are coalesced into small groups before being processed together as batch jobs.
+Systems like Storm or TelegraphCQ handle streams of data by creating pipelines for record-at-a-time processing. In this environment, data flows through the system (potentially through different machines) and is continuously processed and augmented.
+Other systems like Spark Streaming and Trill rely on micro-batches. In these systems, records are coalesced into small groups before being processed together as batch jobs.
 
 It is widely believed that to achieve low latency, applications should use the record-at-a-time approach, while for high throughput, the micro-batch model is more appropriate. 
 The reason is that even though record-at-a-time systems can start processing data as soon as it is received, processing more records at a time will amortize the overheads associated with processing.
@@ -32,5 +32,5 @@ In Section 3 we motivate this work with a performance study of Spark Streaming a
 In Section 4 we present optimizations aimed at solving some of the architectural deficiencies identified in the previous section.
 In Section 5 we present some of the lessons gathered during this work and discuss some of the architectural changes we believe are required to make Spark Streaming provide lower latencies.
 In Section 6 we describe how some other contributions relate and complement our work.
-Finally, in section 7 we conclude.
+Finally, in Section 7 we summarize our research and discuss the next steps.
 

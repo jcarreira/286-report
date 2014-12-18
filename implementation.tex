@@ -11,7 +11,7 @@ As we looked deeper into the 5.0ms, we found that approximately 3.6ms out of thi
  \begin{center}
    \includegraphics[scale=0.30]{images_graphs/deserialization.eps}
  \end{center}
- \caption{How a task is deserialized on the executor. Examples of new dependencies can be new libraries needed to run the current task.}
+ \caption{How a task is deserialized on the Executor. Examples of new dependencies can be new libraries needed to run the current task.}
  \label{fig:deserialization}
 \end{figure}
 
@@ -35,7 +35,7 @@ In order to reduce the amount of duplicate data transferred, Spark wraps the fun
 
 This approach, however, is still too wasteful in a streaming environment. Similar to the rarity of new dependencies, the types of RDDs and functions to operate on them change little from batch to batch. With the current approach, one round trip is still required per batch to fetch the function and RDD, even though information could be derived from a previous batch. As the batch interval shrinks, this inefficiency becomes more apparent.
 
-To eliminate this round trip, we experimented with caching of information on the functions and RDDs. The cache is implemented by keeping track of previously broadcasted information on the driver, and resend the previous broadcast variable if possible rather than creating a new one every time. Broadcast variables are automatically cached on the Executor side, so this methodology removes the extraneous communication with the Driver.
+To eliminate this round trip, we experimented with caching of information on the functions and RDDs. The cache is implemented by keeping track of previously broadcasted information on the Driver, and resend the previous broadcast variable if possible rather than creating a new one every time. Broadcast variables are automatically cached on the Executor side, so this methodology removes the extraneous communication with the Driver.
 
 \subsection{Block Storage}
 As mentioned in Section 2, Spark Streaming heavily uses the producer-consumer pattern, both through its usage of queues with pushing and polling threads as well as the Actor model. This pattern has many advantages, namely modularity, and the ability to explicitly shows bottlenecks in the pipeline. If a downstream processing is slow, a pushback mechanism can be used, where the upstream is blocked from inserting more items into the queue until the queue has free space.
@@ -43,7 +43,7 @@ As mentioned in Section 2, Spark Streaming heavily uses the producer-consumer pa
 We looked more closely at the section of the system responsible for storing blocks and sending their metadata to the Driver, and found the pushback to be the culprit. More specifically, one thread coalesces records into blocks, and puts them into a queue. Another thread polls the queue, and performs the storage and Driver communication. The consumer in this queue cannot keep up with the producer, introducing delays. To solve this problem, we spawned more threads to act as consumers.
 
 \subsection{Evaluation}
-The improvements of the two optimizations in task deserialization are also shown in Figure \ref{fig:deserialization_times}. After the changes, deserialization time for a task decreased from 3.6ms to 0.2ms. The impact of the two changes on overall task runtime is reflected in Figure~\ref{fig:runtime_optimizations}.
+The improvements of the two optimizations in task deserialization are also shown in the right half of Figure \ref{fig:deserialization_times}. After the changes, deserialization time for a task decreased from 3.6ms to 0.2ms. The impact of the two changes on overall task runtime is reflected in Figure~\ref{fig:runtime_optimizations}.
 
 \begin{figure}[t!]
  \begin{center}
@@ -59,11 +59,11 @@ To examine how the number of consumers storing blocks changes latency, we ran a 
 
 
 \subsection{Limitations}
-While caching task binaries sound simple in theory, they are more complicated to implement in practice. For example, in our implementation, the Driver caches the serialized format on the function and RDD, and use it to test equality. For serializations across batches to match, we prevented fields such as IDs that are unique across objects to be serialized. While this change does not affect correctness, it will complicate other components such as logging that use those information.
+While caching task binaries sound simple in theory, they are more complicated to implement in practice. For example, in our implementation, the Driver caches the serialized format on the function and RDD, and use it to test equality. For serializations across batches to match, we prevented fields such as IDs that are unique across objects to be serialized. Even though this change does not affect correctness, it will complicate other components such as logging that use those information.
 
 Furthermore, our caching technique only works for batches with single stages. When there are multiple stages, i.e. when shuffles or aggregations are involved, the lineage information of the RDD tends to change from batch to batch, making it difficult to hit a previously broadcasted version.
 
-Finally, the largest limitation to our findings is arguably the fact that we only benchmarked the before and after results on a single machine. This limitation is both due to time constraints as well as volatilities of the distributed environment. For example, since the clocks are synchronized across machines, the differences between time stamps generated by different machines are less useful, especially when they are in the order of milliseconds.
+Finally, the largest limitation to our findings is arguably the fact that we only benchmarked the before and after results on a single machine. This limitation is both due to time constraints as well as volatility of the distributed environment. For example, since the clocks are synchronized across machines, the differences between timestamps generated by different machines are less useful, especially when they are in the order of milliseconds.
 
 \begin{figure}[t!]
  \begin{center}
