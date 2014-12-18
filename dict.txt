@@ -1,7 +1,8 @@
-personal_ws-1.1 en 69 
+personal_ws-1.1 en 72 
 stateful
 workflows
 RDDs
+modularity
 dataflows
 throughputs
 pipelining
@@ -18,6 +19,7 @@ GraphX
 benchmarked
 IvyBridge
 unboundedly
+pushback
 deserialize
 InfiniBand
 Joao
@@ -58,6 +60,7 @@ discretized
 punctuations
 Datasets
 MLlib
+taskBinary
 batchInterval
 Jian
 taskJars
