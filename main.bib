@@ -130,36 +130,14 @@
     Year = {2014},
     Bdsk-Url-1 = {http://research.microsoft.com/apps/pubs/default.aspx?id=214609}}
 
-
-@techreport{Naiad,
-        Abstract = {<p>This technical report introduces Trill -- a new query processor for analytics.
-            Trill fulfills a combination of three requirements for a query processor to serve
-                the diverse big data analytics space: (1) Query Model: Trill is based on a
-                tempo-relational model that enables it to handle streaming and relational queries
-                with early results, across the latency spectrum from real-time to offline; (2)
-                Fabric and Language Integration: Trill is architected as a high-level language
-                library that supports rich data-types and user libraries, and integrates well
-                with existing distribution fabrics and applications; and (3) Performance: Trill's
-                throughput is high across the latency spectrum. For streaming data, Trill's
-                throughput is 2-4 orders of magnitude higher than today's comparable streaming
-                engines. For offline relational queries, Trill's throughput is comparable to a
-                major modern commercial columnar DBMS.<br/>
-                <br/>
-                Trill uses a streaming
-                batched-columnar data representation with a new dynamic compilation-based system
-                architecture that addresses all these requirements. In this technical report, we
-                describe Trill's new design and architecture, and report experimental results
-                that demonstrate Trill's high performance across diverse analytics scenarios. We
-                also describe how Trill's ability to support diverse analytics has resulted in
-                its adoption across many usage scenarios at Microsoft.</p>},
-        Author = {Badrish Chandramouli and Jonathan Goldstein and Mike Barnett and Robert DeLine and Danyel Fisher and John C. Platt and James F. Terwilliger and John Wernsing},
-        Month = {April},
-        Number = {MSR-TR-2014-54},
-        Publisher = {Microsoft Research},
-        Title = {The Trill Incremental Analytics Engine},
-        Url = {http://research.microsoft.com/apps/pubs/default.aspx?id=214609},
-        Year = {2014},
-        Bdsk-Url-1 = {http://research.microsoft.com/apps/pubs/default.aspx?id=214609}}
+@inproceedings{murray2013naiad,
+  title={Naiad: a timely dataflow system},
+  author={Murray, Derek G and McSherry, Frank and Isaacs, Rebecca and Isard, Michael and Barham, Paul and Abadi, Martin},
+  booktitle={Proceedings of the Twenty-Fourth ACM Symposium on Operating Systems Principles},
+  pages={439--455},
+  year={2013},
+  organization={ACM}
+}
 
 @inproceedings{Niagara,
     author = {Chen, Jianjun and DeWitt, David J. and Tian, Feng and Wang, Yuan},
